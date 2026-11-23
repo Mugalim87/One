@@ -1,0 +1,2345 @@
+<!DOCTYPE html>
+<html lang="ky" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профилдик окутуу системасы жана инженердик технологиялар — Информатика мугалимдери үчүн методикалык портал</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'Inter', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#070e21',
+                            slate: '#131d38',
+                            accent: '#2563eb',
+                            teal: '#0d9488'
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 20px 50px -12px rgba(2, 6, 23, 0.45)',
+                        'soft': '0 12px 30px -10px rgba(15, 23, 42, 0.08), 0 4px 12px -4px rgba(15, 23, 42, 0.04)',
+                        'soft-hover': '0 24px 44px -12px rgba(15, 23, 42, 0.14), 0 8px 18px -6px rgba(37, 99, 235, 0.12)'
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+        .font-display {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+        }
+        .hero-grid-bg {
+            background-color: #060b19;
+            background-image:
+                radial-gradient(circle at 14% 18%, rgba(59, 130, 246, 0.28), transparent 44%),
+                radial-gradient(circle at 86% 22%, rgba(20, 184, 166, 0.24), transparent 46%),
+                radial-gradient(circle at 50% 95%, rgba(99, 102, 241, 0.14), transparent 50%),
+                linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+        }
+        .card-elevated {
+            background: #ffffff;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 12px 30px -10px rgba(15, 23, 42, 0.07), 0 4px 12px -4px rgba(15, 23, 42, 0.04);
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease;
+        }
+        .card-elevated:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 44px -12px rgba(15, 23, 42, 0.13), 0 8px 18px -6px rgba(37, 99, 235, 0.1);
+            border-color: #cbd5e1;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(0.985);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .modal-animate {
+            animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- ==================== 1. ЖОГОРКУ ПАНЕЛЬ ЖАНА НАВИГАЦИЯ ==================== -->
+    <header class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/90 shadow-lg">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20 gap-3">
+                <!-- Сол тарап: МЕХАТРОНИКА НООКАТ РАЙОНУ эмблемасы жана аталышы -->
+                <a href="Slide.pdf" target="_blank" class="flex items-center gap-3 shrink-0 group focus:outline-none">
+                    <div class="relative">
+                        <div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-blue-500/30 to-teal-400/30 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <svg class="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 drop-shadow-md transition-transform duration-200 group-hover:scale-105" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="МЕХАТРОНИКА НООКАТ РАЙОНУ эмблемасы">
+                            <defs>
+                                <linearGradient id="ringBlueGrad" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#1d4ed8"/>
+                                    <stop offset="100%" stop-color="#0f172a"/>
+                                </linearGradient>
+                                <linearGradient id="ringRedGrad" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#ef4444"/>
+                                    <stop offset="100%" stop-color="#991b1b"/>
+                                </linearGradient>
+                                <radialGradient id="glassCoreGrad" cx="45%" cy="38%" r="60%">
+                                    <stop offset="0%" stop-color="#16a34a"/>
+                                    <stop offset="75%" stop-color="#15803d"/>
+                                    <stop offset="100%" stop-color="#052e16"/>
+                                </radialGradient>
+                                <path id="topArcText" d="M 16,60 A 44,44 0 1,1 104,60"/>
+                                <path id="bottomArcText" d="M 103,64 A 43,43 0 0,1 17,64"/>
+                            </defs>
+                            <circle cx="60" cy="60" r="57" fill="url(#ringRedGrad)" stroke="#f8fafc" stroke-width="2"/>
+                            <circle cx="60" cy="60" r="49" fill="url(#ringBlueGrad)" stroke="#fca5a5" stroke-width="1.2"/>
+                            <circle cx="60" cy="60" r="35" fill="url(#glassCoreGrad)" stroke="#eab308" stroke-width="2"/>
+                            <path d="M40 42 L48 42 L50 47 L54 47 L56 42 L62 42 L62 48 L66 50 L62 52 L62 58 L56 58 L54 53 L50 53 L48 58 L40 58 L40 52 L36 50 L40 48 Z" fill="#dc2626" stroke="#fecaca" stroke-width="0.9"/>
+                            <path d="M56 50 L66 50 L72 44 L80 44" stroke="#facc15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M56 54 L65 54 L72 61 L81 61" stroke="#facc15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="65" y="47" width="10" height="10" rx="1.5" fill="#e2e8f0" stroke="#475569" stroke-width="1"/>
+                            <path d="M82 43 A19 19 0 0 1 82 67" stroke="#facc15" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+                            <path d="M86 39 A25 25 0 0 1 86 71" stroke="#fde047" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                            <circle cx="60" cy="60" r="35" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+                            <text fill="#ffffff" font-size="8.4" font-weight="800" letter-spacing="1.4">
+                                <textPath href="#topArcText" startOffset="50%" text-anchor="middle">МЕХАТРОНИКА</textPath>
+                            </text>
+                            <text fill="#ffffff" font-size="7.3" font-weight="800" letter-spacing="1.1">
+                                <textPath href="#bottomArcText" startOffset="50%" text-anchor="middle">НООКАТ РАЙОНУ</textPath>
+                            </text>
+                        </svg>
+                    </div>
+                    <div class="leading-tight">
+                        <div class="font-display font-extrabold text-sm sm:text-base lg:text-lg text-white tracking-tight whitespace-nowrap">
+                            Информатика &amp; Мехатроника
+                        </div>
+                        <div class="text-[11px] sm:text-xs font-medium text-teal-300/95 whitespace-nowrap">
+                            Профилдик окутуу порталы
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Катар көрүнүүчү Навигация -->
+                <nav aria-label="Негизги навигация" class="hidden md:flex items-center gap-1 lg:gap-1.5 bg-slate-900/90 border border-slate-800 rounded-2xl p-1.5 shadow-inner">
+                    <a href="ИШ ПЛАН.pdf"target="_blank"  class="px-2.5 lg:px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold text-slate-200 hover:text-white hover:bg-blue-600/35 transition-all whitespace-nowrap">
+                        Методикалык иш план
+                    </a>
+                    <a href="СУНУШТАР.pdf" target="_blank" class="px-2.5 lg:px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold text-slate-200 hover:text-white hover:bg-blue-600/35 transition-all whitespace-nowrap">
+                        Методикалык сунуштар
+                    </a>
+                    <a href="БАГЫТ.pdf" target="_blank" class="px-2.5 lg:px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold text-slate-200 hover:text-white hover:bg-blue-600/35 transition-all whitespace-nowrap">
+                        Профилге багыт
+                    </a>
+                    <a href="КТП-ПЧД-8-класс.pdf" target="_blank" class="px-2.5 lg:px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold text-teal-200 hover:text-white hover:bg-teal-600/35 transition-all flex items-center gap-1.5 whitespace-nowrap">
+                        <span class="w-2 h-2 rounded-full bg-teal-400 shrink-0"></span>
+                        <span>Ийрим КТП</span>
+                    </a>
+                    <a href="https://mugalim87.github.io/Portfolio/%D0%9A%D0%B8%D1%82%D0%B5%D0%BF%D1%82%D0%B5%D1%80.html" target="_blank" class="px-2.5 lg:px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold text-amber-200 hover:text-white hover:bg-amber-500/25 transition-all whitespace-nowrap">
+                        Дидактикалык адабияттар
+                    </a>
+                    <a href="Slide.pdf" target="_blank" class="px-3 lg:px-4 py-2 rounded-xl text-xs lg:text-sm font-bold bg-blue-600/90 hover:bg-blue-500 text-white shadow-sm transition-all whitespace-nowrap">
+                        Презентациялар
+                    </a>
+                </nav>
+
+                <!-- Мобилдик менюну ачуу баскычы -->
+                <button id="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Менюну ачуу" class="md:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-700/90 text-slate-100 hover:bg-slate-800 focus:outline-none">
+                    <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Мобилдик меню панели -->
+        <div id="mobile-drawer" class="hidden md:hidden bg-slate-950/98 border-t border-slate-800 px-4 py-4 space-y-2 shadow-2xl">
+            <a href="ИШ ПЛАН.pdf" target="_blank" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-semibold text-slate-100 bg-slate-900 hover:bg-blue-600/30 border border-slate-800">
+                Методикалык иш план
+            </a>
+            <a href="СУНУШТАР.pdf" target="_blank" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-semibold text-slate-100 bg-slate-900 hover:bg-blue-600/30 border border-slate-800">
+                Методикалык сунуштар
+            </a>
+            <a href="БАГЫТ.pdf" target="_blank" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-semibold text-slate-100 bg-slate-900 hover:bg-blue-600/30 border border-slate-800">
+                Профилге багыт
+            </a>
+            <a href="КТП-ПЧД-8-класс.pdf" target="_blank" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-semibold text-teal-200 bg-slate-900 hover:bg-teal-600/30 border border-slate-800">
+                Ийрим КТП
+            </a>
+            <a href="https://mugalim87.github.io/Portfolio/%D0%9A%D0%B8%D1%82%D0%B5%D0%BF%D1%82%D0%B5%D1%80.html" target="_blank" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-semibold text-amber-200 bg-slate-900 hover:bg-amber-600/30 border border-slate-800">
+                Дидактикалык адабияттар
+            </a>
+            <a href="Slide.pdf" target="_blank" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-bold text-white bg-blue-600 hover:bg-blue-500">
+                Презентациялар
+            </a>
+        </div>
+    </header>
+
+    <!-- ==================== 2. HERO ЖАНА ЛЕКТОР МУГАЛИМ БӨЛҮМҮ ==================== -->
+    <section id="hero" class="hero-grid-bg text-white py-14 sm:py-20 lg:py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                <!-- Сол тарап: Профилдик окутуу жана информатика мугалимдери үчүн багыт -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <h1 class="font-display text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.14]">
+                        Профилдик окутуу системасы жана <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-300">инженердик технологиялар</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Мектеп информатикасын алгоритмдик ой жүгүртүүдөн программалоого, мехатроникага, санариптик моделдөөгө жана реалдуу инженердик долбоорлоого байланыштырган заманбап окуу модели.
+                    </p>
+
+                    <!-- 30% теория vs 70% практика көрсөткүчү -->
+                    <div class="bg-slate-900/80 backdrop-blur-md border border-slate-700/80 rounded-2xl p-4 sm:p-5 max-w-2xl mx-auto lg:mx-0 shadow-lg">
+                        <div class="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm font-bold mb-2.5">
+                            <span class="text-blue-300">30% Теориялык негиз &amp; алгоритмдер</span>
+                            <span class="text-teal-300">70% Практика, код, симуляция &amp; долбоор</span>
+                        </div>
+                        <div class="w-full h-3.5 rounded-full bg-slate-800/90 overflow-hidden flex border border-slate-700/80 p-0.5 gap-0.5">
+                            <div class="w-[30%] bg-gradient-to-r from-blue-600 to-blue-400 h-full rounded-l-full" title="30% Теория"></div>
+                            <div class="w-[70%] bg-gradient-to-r from-teal-500 to-emerald-400 h-full rounded-r-full" title="70% Практика"></div>
+                        </div>
+                    </div>
+
+                    <!-- 4 STEM түркүгү -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                        <div class="bg-slate-900/75 hover:bg-slate-900/95 border border-slate-800 hover:border-blue-500/40 rounded-2xl p-3.5 text-left transition-colors">
+                            <div class="text-xs font-extrabold text-blue-400">S • Science</div>
+                            <div class="text-xs text-slate-300 mt-1">Физика, математика &amp; логика</div>
+                        </div>
+                        <div class="bg-slate-900/75 hover:bg-slate-900/95 border border-slate-800 hover:border-teal-500/40 rounded-2xl p-3.5 text-left transition-colors">
+                            <div class="text-xs font-extrabold text-teal-400">T • Technology</div>
+                            <div class="text-xs text-slate-300 mt-1">Python, ЖИ, тармак &amp; IoT</div>
+                        </div>
+                        <div class="bg-slate-900/75 hover:bg-slate-900/95 border border-slate-800 hover:border-amber-500/40 rounded-2xl p-3.5 text-left transition-colors">
+                            <div class="text-xs font-extrabold text-amber-400">E • Engineering</div>
+                            <div class="text-xs text-slate-300 mt-1">Мехатроника &amp; 3D-CAD</div>
+                        </div>
+                        <div class="bg-slate-900/75 hover:bg-slate-900/95 border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-3.5 text-left transition-colors">
+                            <div class="text-xs font-extrabold text-indigo-400">M • Math</div>
+                            <div class="text-xs text-slate-300 mt-1">Алгоритм &amp; маалымат модели</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Оң тарап: Лектор мугалимдин картасы ("Агай тууралуу кыскача") -->
+                <div class="lg:col-span-5">
+                    <div class="bg-slate-900/90 backdrop-blur-md border border-slate-700/80 rounded-3xl p-6 sm:p-7 shadow-glass">
+                        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                            <!-- Ак калпактуу, костюм-галстуктуу жана медалдуу портрет (Foto.jpg) -->
+                            <div class="w-32 h-40 sm:w-36 sm:h-44 rounded-2xl overflow-hidden border-2 border-sky-300/75 bg-gradient-to-b from-sky-300 to-sky-500 shrink-0 shadow-lg relative ring-4 ring-blue-500/15">
+                                <img id="hero-teacher-photo" src="Foto.jpg" alt="Агай мугалимдин портрети (Foto.jpg)" class="w-full h-full object-cover object-top block">
+                                <svg id="hero-teacher-photo-fallback" class="w-full h-full object-cover hidden" viewBox="0 0 260 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ак калпак жана медалдар тагылган агай мугалимдин портрети">
+                                    <defs>
+                                        <linearGradient id="kalpakSkyBg" x1="0" y1="0" x2="0" y2="320" gradientUnits="userSpaceOnUse">
+                                            <stop offset="0%" stop-color="#93c5fd"/>
+                                            <stop offset="55%" stop-color="#60a5fa"/>
+                                            <stop offset="100%" stop-color="#3b82f6"/>
+                                        </linearGradient>
+                                        <linearGradient id="teacherSkin" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#e8b288"/>
+                                            <stop offset="100%" stop-color="#ca8c5f"/>
+                                        </linearGradient>
+                                        <linearGradient id="plaidJacketGrad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#1f2937"/>
+                                            <stop offset="100%" stop-color="#0f172a"/>
+                                        </linearGradient>
+                                        <linearGradient id="burgundyTieGrad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#881337"/>
+                                            <stop offset="100%" stop-color="#4c0519"/>
+                                        </linearGradient>
+                                        <linearGradient id="kalpakFeltGrad" x1="0" y1="0" x2="1" y2="1">
+                                            <stop offset="0%" stop-color="#ffffff"/>
+                                            <stop offset="70%" stop-color="#f8fafc"/>
+                                            <stop offset="100%" stop-color="#e2e8f0"/>
+                                        </linearGradient>
+                                    </defs>
+
+                                    <rect width="260" height="320" fill="url(#kalpakSkyBg)"/>
+                                    <path d="M8 320 C14 244 58 214 130 214 C202 214 246 244 252 320 Z" fill="url(#plaidJacketGrad)"/>
+                                    <g stroke="#334155" stroke-width="0.8" opacity="0.55">
+                                        <line x1="36" y1="226" x2="22" y2="320"/>
+                                        <line x1="58" y1="220" x2="48" y2="320"/>
+                                        <line x1="202" y1="220" x2="212" y2="320"/>
+                                        <line x1="224" y1="226" x2="238" y2="320"/>
+                                        <line x1="16" y1="252" x2="244" y2="252"/>
+                                        <line x1="12" y1="278" x2="248" y2="278"/>
+                                        <line x1="10" y1="304" x2="250" y2="304"/>
+                                    </g>
+                                    <polygon points="98,214 162,214 130,295" fill="#bae6fd"/>
+                                    <polygon points="122,222 138,222 135,235 125,235" fill="#70102d"/>
+                                    <polygon points="125,235 135,235 139,305 130,316 121,305" fill="url(#burgundyTieGrad)"/>
+                                    <g stroke="#fda4af" stroke-width="1" opacity="0.45">
+                                        <line x1="125" y1="244" x2="135" y2="250"/>
+                                        <line x1="124" y1="258" x2="136" y2="264"/>
+                                        <line x1="123" y1="272" x2="137" y2="278"/>
+                                        <line x1="122" y1="286" x2="138" y2="292"/>
+                                    </g>
+                                    <polygon points="98,214 122,223 108,284 74,244" fill="#111827"/>
+                                    <polygon points="162,214 138,223 152,284 186,244" fill="#111827"/>
+                                    <line x1="176" y1="256" x2="196" y2="251" stroke="#9f1239" stroke-width="2.2" stroke-linecap="round"/>
+
+                                    <g transform="translate(152, 260)">
+                                        <rect x="4" y="0" width="14" height="11" rx="1.5" fill="#dc2626" stroke="#fde047" stroke-width="1"/>
+                                        <circle cx="11" cy="5.5" r="2.5" fill="#facc15"/>
+                                        <polygon points="11,11 18,17 15,27 11,29 7,27 4,17" fill="#f59e0b" stroke="#78350f" stroke-width="0.9"/>
+                                        <polygon points="11,13 15,17 13,25 9,25 7,17" fill="#dc2626"/>
+                                    </g>
+                                    <g transform="translate(174, 258)">
+                                        <rect x="4" y="0" width="14" height="11" rx="1.5" fill="#dc2626" stroke="#fde047" stroke-width="1"/>
+                                        <circle cx="11" cy="5.5" r="2.5" fill="#e2e8f0"/>
+                                        <circle cx="11" cy="19" r="8" fill="#eab308" stroke="#713f12" stroke-width="1"/>
+                                        <circle cx="11" cy="19" r="5.5" fill="#1d4ed8"/>
+                                    </g>
+                                    <g transform="translate(196, 256)">
+                                        <rect x="4" y="0" width="14" height="11" rx="1.5" fill="#991b1b" stroke="#fde047" stroke-width="1"/>
+                                        <circle cx="11" cy="19" r="8" fill="#facc15" stroke="#854d0e" stroke-width="1"/>
+                                        <circle cx="11" cy="19" r="4.5" fill="#fef08a"/>
+                                    </g>
+
+                                    <path d="M106 168 L154 168 L159 218 L101 218 Z" fill="url(#teacherSkin)"/>
+                                    <ellipse cx="73" cy="134" rx="9" ry="17" fill="#c7875a"/>
+                                    <ellipse cx="187" cy="134" rx="9" ry="17" fill="#c7875a"/>
+                                    <path d="M78 106 C78 72 98 56 130 56 C162 56 182 72 182 106 C182 146 164 178 130 182 C96 178 78 146 78 106 Z" fill="url(#teacherSkin)"/>
+                                    <circle cx="101" cy="135" r="2.2" fill="#5c3a21" opacity="0.75"/>
+                                    <circle cx="151" cy="136" r="1.8" fill="#5c3a21" opacity="0.7"/>
+                                    <circle cx="132" cy="167" r="1.5" fill="#5c3a21" opacity="0.7"/>
+                                    <path d="M92 111 Q105 106 118 110" stroke="#27272a" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+                                    <path d="M142 110 Q155 106 168 111" stroke="#27272a" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+                                    <ellipse cx="105" cy="122" rx="8.5" ry="4.6" fill="#ffffff"/>
+                                    <circle cx="105" cy="122" r="4.2" fill="#291d14"/>
+                                    <circle cx="106.5" cy="120.5" r="1.4" fill="#ffffff"/>
+                                    <ellipse cx="155" cy="122" rx="8.5" ry="4.6" fill="#ffffff"/>
+                                    <circle cx="155" cy="122" r="4.2" fill="#291d14"/>
+                                    <circle cx="156.5" cy="120.5" r="1.4" fill="#ffffff"/>
+                                    <path d="M130 114 L127 140 Q130 145 135 143" stroke="#965a2d" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+                                    <path d="M112 156 Q130 161 148 156" stroke="#7c441b" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+                                    <path d="M72 86 C74 34 102 14 130 14 C158 14 186 34 188 86 L180 96 L80 96 Z" fill="url(#kalpakFeltGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+                                    <path d="M130 14 L130 96" stroke="#18181b" stroke-width="5.5"/>
+                                    <path d="M96 64 C92 56 102 48 108 55 C113 61 103 68 96 64 Z" stroke="#1e293b" stroke-width="1.6" fill="none"/>
+                                    <path d="M164 64 C168 56 158 48 152 55 C147 61 157 68 164 64 Z" stroke="#1e293b" stroke-width="1.6" fill="none"/>
+                                    <path d="M68 84 C68 68 96 62 130 62 C164 62 192 68 192 84 C192 98 164 104 130 104 C96 104 68 98 68 84 Z" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.6"/>
+                                    <path d="M130 62 L130 104" stroke="#18181b" stroke-width="5.5"/>
+                                    <path d="M70 84 C98 92 162 92 190 84" stroke="#cbd5e1" stroke-width="1.2" fill="none"/>
+                                </svg>
+                            </div>
+
+                            <div class="text-center sm:text-left space-y-2">
+                                <span class="inline-block px-3 py-1 rounded-full bg-teal-500/20 border border-teal-400/30 text-teal-200 text-xs font-bold">
+                                    Агай тууралуу кыскача
+                                </span>
+                                <h2 class="font-display text-xl sm:text-2xl font-extrabold text-white leading-snug">
+                                    Информатика &amp; Мехатроника педагогу
+                                </h2>
+                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                    Ноокат районунда мехатроника, маалымат технологиялары жана информатика багыттарында ийрим жетекчиси жана предметтик мугалим. «Жылдын мыкты ийрим мугалими-2024» республикалык турунун 1-орун ээси.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-5 border-t border-slate-800 grid grid-cols-3 gap-2.5 text-center">
+                            <div class="p-2.5 rounded-xl bg-slate-950/85 border border-slate-800">
+                                <div class="text-base font-extrabold text-blue-400">2007–2027</div>
+                                <div class="text-[11px] text-slate-400">Эмгек жолу</div>
+                            </div>
+                            <div class="p-2.5 rounded-xl bg-slate-950/85 border border-slate-800">
+                                <div class="text-base font-extrabold text-teal-400">1-орун</div>
+                                <div class="text-[11px] text-slate-400">Респ. 2024</div>
+                            </div>
+                            <div class="p-2.5 rounded-xl bg-slate-950/85 border border-slate-800">
+                                <div class="text-base font-extrabold text-amber-400">4 деңгээл</div>
+                                <div class="text-[11px] text-slate-400">Рай/Обл/Респ/Эл ар.</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 flex items-center justify-between gap-3">
+                            <span class="text-xs text-slate-400">2007–2027-жылдардын хронологиясы</span>
+                            <a href="#portfolio" class="text-xs sm:text-sm font-bold text-amber-300 hover:text-amber-200 transition-colors">
+                                Толук портфолиону көрүү →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 3. МЕТОДИКАЛЫК НЕГИЗ ЖАНА САЛЫШТЫРМА МАТРИЦА ==================== -->
+    <section id="method" class="py-16 sm:py-20 bg-white border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs font-bold uppercase tracking-wider">
+                    Методикалык негиз
+                </span>
+                <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                    Базалык информатика vs Инженердик-профилдик окутуу
+                </h2>
+                <p class="text-slate-600 mt-3 text-sm sm:text-base leading-relaxed">
+                    Информатика мугалими сабакты жөн гана программалык пакеттерди үйрөтүүдөн инженердик долбоорлоо жана маселе чечүү системасына кантип өткөрөт?
+                </p>
+            </div>
+
+            <!-- Салыштырма таблица -->
+            <div class="overflow-x-auto rounded-3xl border border-slate-200/90 shadow-soft">
+                <table class="w-full text-left border-collapse min-w-[640px]">
+                    <thead>
+                        <tr class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white text-xs sm:text-sm">
+                            <th class="py-4 px-5 font-bold">Салыштыруу критерийи</th>
+                            <th class="py-4 px-5 font-bold text-slate-300">Базалык информатика</th>
+                            <th class="py-4 px-5 font-bold text-teal-300">Инженердик-профилдик информатика</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200/80 text-xs sm:text-sm bg-white">
+                        <tr class="hover:bg-blue-50/35 transition-colors">
+                            <td class="py-4 px-5 font-bold text-slate-900">Окутуунун башкы максаты</td>
+                            <td class="py-4 px-5 text-slate-600">Санариптик сабаттуулук жана стандарттык куралдарды колдонуу</td>
+                            <td class="py-4 px-5 text-slate-800 font-medium">Алгоритмдик ой жүгүртүү, коддоо, сенсор/модел түзүү жана инженердик чечим</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50/35 transition-colors">
+                            <td class="py-4 px-5 font-bold text-slate-900">Теория жана практика катышы</td>
+                            <td class="py-4 px-5 text-slate-600">Көбүнчө теориялык түшүндүрүү жана кыска көнүгүүлөр</td>
+                            <td class="py-4 px-5 text-slate-800 font-medium">30% теория / 70% практика, симуляция жана долбоордук иш</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50/35 transition-colors">
+                            <td class="py-4 px-5 font-bold text-slate-900">Тапшырманын форматы</td>
+                            <td class="py-4 px-5 text-slate-600">Бир жооптуу көнүгүүлөр жана даяр шаблондор</td>
+                            <td class="py-4 px-5 text-slate-800 font-medium">Ачык инженердик кейстер, прототип, кодду оптималдаштыруу жана тесттөө</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50/35 transition-colors">
+                            <td class="py-4 px-5 font-bold text-slate-900">Баалоо системасы</td>
+                            <td class="py-4 px-5 text-slate-600">Тест жана жалпы үй тапшырмасынын баасы</td>
+                            <td class="py-4 px-5 text-slate-800 font-medium">Рубрика боюнча: алгоритм, код сапаты, симуляция/прототип жана коргоо</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50/35 transition-colors">
+                            <td class="py-4 px-5 font-bold text-slate-900">Олимпиада жана конкурска даярдык</td>
+                            <td class="py-4 px-5 text-slate-600">Кошумча же өз алдынча аракетке байланыштуу</td>
+                            <td class="py-4 px-5 text-slate-800 font-medium">Окуу программасынын ичинде системалуу түрдө интеграцияланган</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 4. 6 МОДУЛЬ ЖАНА ИНТЕРАКТИВДҮҮ КТП МОДАЛЫ ==================== -->
+    <section id="modules" class="py-16 sm:py-20 bg-slate-50/90 border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+                <div>
+                    <span class="px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200/80 text-teal-700 text-xs font-bold uppercase tracking-wider">
+                        Окуу модулдары &amp; КТП конструктору
+                    </span>
+                    <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                        6 методикалык модуль
+                    </h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base max-w-2xl leading-relaxed">
+                        Каалаган модулду басып, 45 мүнөттүк сабактын түзүмүн, Блум таксономиясы боюнча максаттарды, баалоо рубрикасын жана Word (.docx) форматында көчүрүлүүчү КТПны көрүңүз.
+                    </p>
+                </div>
+            </div>
+
+            <div id="modules-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- ==================== 5. ВИРТУАЛДЫК ЛАБОРАТОРИЯЛАР / САНАРИПТИК КУРАЛДАР ==================== -->
+    <section id="tools" class="py-16 sm:py-20 bg-white border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-200/80 text-indigo-700 text-xs font-bold uppercase tracking-wider">
+                    Санариптик куралдар
+                </span>
+                <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                    Виртуалдык лабораторияларды сабакта колдонуу
+                </h2>
+                <p class="text-slate-600 mt-3 text-sm sm:text-base leading-relaxed">
+                    Браузер аркылуу иштеген заманбап симуляторлор кымбат жабдуу жетишпеген учурда да практикалык сабакты толук кандуу өткөрүүгө жардам берет.
+                </p>
+            </div>
+
+            <!-- Интерактивдүү вкладкалар -->
+            <div class="flex flex-wrap justify-center gap-2.5 mb-8" role="tablist" aria-label="Санариптик куралдар">
+                <button type="button" data-tool-tab="wokwi" class="tool-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-blue-600 text-white shadow-md shadow-blue-600/20 transition-all cursor-pointer">
+                    Wokwi (Arduino / ESP32)
+                </button>
+                <button type="button" data-tool-tab="colab" class="tool-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer">
+                    Google Colab (Python &amp; ЖИ)
+                </button>
+                <button type="button" data-tool-tab="onshape" class="tool-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer">
+                    Onshape (3D-CAD)
+                </button>
+                <button type="button" data-tool-tab="packettracer" class="tool-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer">
+                    Cisco Packet Tracer (Тармактар)
+                </button>
+            </div>
+
+            <div id="tool-detail-panel" class="card-elevated rounded-3xl p-6 sm:p-8"></div>
+        </div>
+    </section>
+
+    <!-- ==================== 6. ПЕДАГОГДОРДУН ДИАГНОСТИКАЛЫК СУРАМЖЫЛООСУ ==================== -->
+    <section id="test" class="py-16 sm:py-20 bg-slate-50/90 border-b border-slate-200/80">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200/80 text-teal-700 text-xs font-bold uppercase tracking-wider">
+                    Педагогдор тести
+                </span>
+                <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                    Мектеп базасына ылайык профиль аныктоо
+                </h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base leading-relaxed">
+                    5 суроого жооп берип, мектебиңизге эң ылайыктуу инженердик багытты аныктаңыз жана жыйынтыкты кат түрүндө жөнөтүңүз.
+                </p>
+            </div>
+
+            <div class="card-elevated rounded-3xl p-6 sm:p-8">
+                <!-- Прогресс тилкеси -->
+                <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
+                    <span id="test-step-label">Суроо 1 / 5</span>
+                    <span id="test-percent-label">20%</span>
+                </div>
+                <div class="w-full h-2.5 rounded-full bg-slate-200/90 overflow-hidden mb-6">
+                    <div id="test-progress-bar" class="h-full bg-gradient-to-r from-blue-600 to-teal-500 transition-all duration-300 rounded-full" style="width: 20%"></div>
+                </div>
+
+                <!-- Суроолор контейнери -->
+                <div id="test-question-container"></div>
+
+                <!-- Жыйынтык жана жөнөтүү блогу -->
+                <div id="test-result-container" class="hidden space-y-6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 7. АГАЙ ТУУРАЛУУ КЫСКАЧА — ПОРТФОЛИО (2007–2027) ==================== -->
+    <section id="portfolio" class="py-16 sm:py-20 bg-white border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="px-3.5 py-1 rounded-full bg-amber-50 border border-amber-200/90 text-amber-800 text-xs font-bold uppercase tracking-wider">
+                    Портфолио • 2007–2027
+                </span>
+                <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                    Агай тууралуу кыскача
+                </h2>
+                <p class="text-slate-600 mt-3 text-sm sm:text-base leading-relaxed">
+                    Педагогикалык эмгек жолу, мехатроника жана информатика багытындагы ишмердүүлүк жана окуучулардын сынак/олимпиада жетишкендиктери.
+                </p>
+            </div>
+
+            <!-- Портфолио бөлүмүндөгү агайдын сүрөтү жана кыскача баяны -->
+            <div class="rounded-3xl p-6 sm:p-8 mb-8 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-900 text-white border border-slate-800 shadow-xl">
+                <div class="flex flex-col sm:flex-row items-center gap-6">
+                    <div class="w-28 h-36 sm:w-32 sm:h-40 rounded-2xl overflow-hidden border-2 border-sky-300/80 bg-sky-400 shrink-0 shadow-lg ring-4 ring-blue-500/15">
+                        <img id="portfolio-teacher-photo" src="Foto.jpg" alt="Агай мугалимдин сүрөтү (Foto.jpg)" class="w-full h-full object-cover object-top block">
+                    </div>
+                    <div class="text-center sm:text-left space-y-2.5">
+                        <span class="inline-block px-3.5 py-1 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-bold">
+                            Ноокат району • Мехатроника &amp; Информатика
+                        </span>
+                        <h3 class="font-display text-xl sm:text-2xl font-extrabold text-white">
+                            2007–2027-жылдардагы педагогикалык эмгек жолу жана жетишкендиктер
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-3xl">
+                            Кесиптик лицейдеги эмгек жолунан баштап, Ноокат райондук балдардын чыгармачылык борборунда жана жалпы билим берүү мектептеринде мехатроника, маалымат технологиялары жана информатика багыттарында ийгиликтүү иштеп келе жаткан педагог. Төмөндөн каалаган жылды тандап, толук маалыматты көрө аласыз.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Жылдар боюнча чыпка -->
+            <div id="portfolio-filters" class="flex flex-wrap justify-center gap-2 mb-8">
+                <button type="button" data-period="all" class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-900 text-white shadow transition-all cursor-pointer">
+                    Бардык жылдар (2007–2027)
+                </button>
+                <button type="button" data-period="2007-2008" class="portfolio-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer">2007–2008</button>
+                <button type="button" data-period="2020-2021" class="portfolio-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer">2020–2021</button>
+                <button type="button" data-period="2021-2022" class="portfolio-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer">2021–2022</button>
+                <button type="button" data-period="2022-2023" class="portfolio-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer">2022–2023</button>
+                <button type="button" data-period="2023-2024" class="portfolio-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer">2023–2024</button>
+                <button type="button" data-period="2024-2025" class="portfolio-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer">2024–2025</button>
+                <button type="button" data-period="2025-2026" class="portfolio-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer">2025–2026</button>
+                <button type="button" data-period="2026-2027" class="portfolio-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer">2026–2027</button>
+            </div>
+
+            <!-- Хронологиялык карталар -->
+            <div id="portfolio-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- ==================== 8. ОНЛАЙН СЕМИНАРГА КАТТАЛУУ ==================== -->
+    <section id="register" class="py-16 sm:py-20 bg-slate-50/90">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="card-elevated rounded-3xl p-6 sm:p-10">
+                <div class="mb-8">
+                    <span class="px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs font-bold uppercase tracking-wider">
+                        Онлайн семинар
+                    </span>
+                    <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3 leading-snug tracking-tight">
+                        «Профилдик информатиканы окутуу методикасы» онлайн семинарына катталыңыз
+                    </h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                        Форманы толтуруп жөнөтүңүз — билдирмеңиз кат түрүндө жөнөтүлөт.
+                    </p>
+                </div>
+
+                <!-- ӨЗГӨРТҮЛГӨН ЖЕР: action жана method кошулду -->
+                <form id="seminar-registration-form" action="https://formsubmit.co/mehatronika87@gmail.com" method="POST" class="space-y-4">
+                    <input type="text" name="name" required>
+     <input type="email" name="email" required>
+     <button type="submit">Send</button>
+                    <!-- Каттын темасын кооздоо үчүн жашыруун талаа -->
+                    <input type="hidden" name="_subject" value="Онлайн семинарга жаңы катталуу!">
+                    <!-- Капчаны (робот текшерүүнү) өчүрүү -->
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="reg-fullname" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                                Аты-жөнү *
+                            </label>
+                            <input id="reg-fullname" name="Аты-жөнү" type="text" required placeholder="Аты-жөнүңүздү жазыңыз" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                        </div>
+                        <div>
+                            <label for="reg-region" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                                Аймагы *
+                            </label>
+                            <input id="reg-region" name="Аймагы" type="text" required placeholder="Мисалы: Ош облусу, Ноокат району" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="reg-school" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                                Мектеби *
+                            </label>
+                            <input id="reg-school" name="Мектеби" type="text" required placeholder="Мектептин же мекеменин аталышы" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                        </div>
+                        <div>
+                            <label for="reg-phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                                Телефон / WhatsApp *
+                            </label>
+                            <input id="reg-phone" name="Телефон" type="tel" required placeholder="+996 (XXX) XX-XX-XX" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="reg-email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                                Email *
+                            </label>
+                            <input id="reg-email" name="email" type="email" required placeholder="teacher@example.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                        </div>
+                        <div>
+                            <label for="reg-module" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                                Тандалган багыт / модуль *
+                            </label>
+                            <select id="reg-module" name="Модуль" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                                <option value="Python & Жасалма Интеллект">Python &amp; Жасалма Интеллект</option>
+                                <option value="Arduino & IoT / Мехатроника">Arduino &amp; IoT / Мехатроника</option>
+                                <option value="3D-CAD & Прототиптөө">3D-CAD &amp; Прототиптөө</option>
+                                <option value="Олимпиадалык алгоритмдер">Олимпиадалык алгоритмдер</option>
+                                <option value="Тармактар & Киберкоопсуздук">Тармактар &amp; Киберкоопсуздук</option>
+                                <option value="Базалык Информатика (профилге даярдык)">Базалык Информатика (профилге даярдык)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="reg-comment" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                            Комментарий
+                        </label>
+                        <textarea id="reg-comment" name="Комментарий" rows="3" placeholder="Семинарга карата суроолоруңуз же сунуштарыңыз..." class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"></textarea>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+                        <button id="reg-submit-btn" type="submit" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold text-sm shadow-lg shadow-blue-600/25 transition-all cursor-pointer">
+                            Жөнөтүү
+                        </button>
+                     </div>
+
+                    <div id="reg-status-box" class="hidden rounded-2xl p-4 text-sm font-medium border"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- ==================== МОДУЛЬ ЖАНА КТП МОДАЛДЫК ТЕРЕЗЕСИ ==================== -->
+    <div id="module-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="modal-module-title">
+        <div id="module-modal-card" class="modal-animate bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar shadow-2xl border border-slate-200 p-6 sm:p-8 relative">
+            <div class="flex items-start justify-between gap-4 pb-4 border-b border-slate-200">
+                <div>
+                    <span id="modal-module-badge" class="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold"></span>
+                    <h3 id="modal-module-title" class="font-display text-xl sm:text-2xl font-extrabold text-slate-900 mt-2"></h3>
+                </div>
+                <button id="module-modal-close" type="button" aria-label="Терезени жабуу" class="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors shrink-0 cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="modal-module-body" class="mt-6 space-y-6 text-sm text-slate-700"></div>
+        </div>
+    </div>
+
+    <!-- ==================== 1-БАСКЫЧ, 2-БАСКЫЧ, 3-БАСКЫЧ ҮЧҮН МААЛЫМАТ МОДАЛЫ ==================== -->
+    <div id="custom-info-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="custom-info-modal-title">
+        <div id="custom-info-modal-card" class="modal-animate bg-white rounded-3xl max-w-2xl w-full max-h-[88vh] overflow-y-auto custom-scrollbar shadow-2xl border border-slate-200 p-6 sm:p-8 relative">
+            <div class="flex items-start justify-between gap-4 pb-4 border-b border-slate-200">
+                <div>
+                    <span id="custom-info-modal-badge" class="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold"></span>
+                    <h3 id="custom-info-modal-title" class="font-display text-xl sm:text-2xl font-extrabold text-slate-900 mt-2"></h3>
+                </div>
+                <button id="custom-info-modal-close" type="button" aria-label="Терезени жабуу" class="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors shrink-0 cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="custom-info-modal-body" class="mt-6 space-y-4 text-sm text-slate-700"></div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            const TARGET_EMAIL = 'mehatronika87@gmail.com';
+
+            // =========================================================================
+            // 1-БАСКЫЧ, 2-БАСКЫЧ ЖАНА 3-БАСКЫЧ ҮЧҮН МААЛЫМАТ БЛОКТОРУ
+            // =========================================================================
+            const CUSTOM_BUTTON_1_INFO = {
+                buttonLabel: '1-баскыч',
+                badge: '1-баскыч • Кошумча маалымат',
+                title: '1-баскычтын маалыматы',
+                summary: 'Бул бөлүмгө 1-баскыч басылганда көрүнүүчү өзүңүздүн текстиңизди, методикалык эскертмеңизди же кулактандырууңузду жазыңыз.',
+                points: [
+                    '1-пункт: Бул жерге биринчи кошумча маалыматты жазыңыз.',
+                    '2-пункт: Бул жерге экинчи кошумча маалыматты жазыңыз.',
+                    '3-пункт: Кааласаңыз дагы жаңы пункттарды кошуңуз.'
+                ],
+                note: 'Эскертүү: Коддогу CUSTOM_BUTTON_1_INFO объектин өзгөртсөңүз, терезедеги маалымат автоматтык жаңыланат.'
+            };
+
+            const CUSTOM_BUTTON_2_INFO = {
+                buttonLabel: '2-баскыч',
+                badge: '2-баскыч • Кошумча маалымат',
+                title: '2-баскычтын маалыматы',
+                summary: 'Бул бөлүмгө 2-баскыч басылганда көрүнүүчү өзүңүздүн маалыматыңызды, тапшырмаңызды же ресурсуңузду жазыңыз.',
+                points: [
+                    '1-пункт: Бул жерге 2-баскычка тиешелүү маалыматты жазыңыз.',
+                    '2-пункт: Сабак, ийрим же долбоор боюнча кошумча текст кошуңуз.'
+                ],
+                note: 'Эскертүү: Коддогу CUSTOM_BUTTON_2_INFO объектин өзгөртүп колдоно бересиз.'
+            };
+
+            const CUSTOM_BUTTON_3_INFO = {
+                buttonLabel: '3-баскыч',
+                badge: '3-баскыч • Кошумча маалымат',
+                title: '3-баскычтын маалыматы',
+                summary: 'Бул бөлүмгө 3-баскыч басылганда көрүнүүчү өзүңүздүн маалыматыңызды жазыңыз.',
+                points: [
+                    '1-пункт: Бул жерге 3-баскычка тиешелүү маалыматты жазыңыз.',
+                    '2-пункт: Кошумча түшүндүрмө же шилтеме/текст кошуңуз.'
+                ],
+                note: 'Эскертүү: Коддогу CUSTOM_BUTTON_3_INFO объектин өзгөртүп колдоно бересиз.'
+            };
+
+            const CUSTOM_BUTTONS_MAP = {
+                1: CUSTOM_BUTTON_1_INFO,
+                2: CUSTOM_BUTTON_2_INFO,
+                3: CUSTOM_BUTTON_3_INFO
+            };
+
+            let customModalLastFocus = null;
+
+            function openCustomInfoModal(buttonIndex) {
+                const info = CUSTOM_BUTTONS_MAP[buttonIndex];
+                if (!info) return;
+
+                customModalLastFocus = document.activeElement;
+                const modal = document.getElementById('custom-info-modal');
+                const badgeEl = document.getElementById('custom-info-modal-badge');
+                const titleEl = document.getElementById('custom-info-modal-title');
+                const bodyEl = document.getElementById('custom-info-modal-body');
+
+                if (!modal || !badgeEl || !titleEl || !bodyEl) return;
+
+                badgeEl.textContent = info.badge;
+                titleEl.textContent = info.title;
+
+                const pointsHtml = Array.isArray(info.points) && info.points.length > 0
+                    ? `
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                            <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Толук маалымат</div>
+                            <ul class="space-y-1.5 text-xs sm:text-sm text-slate-800">
+                                ${info.points.map((pt) => `
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-blue-600 font-extrabold">•</span>
+                                        <span>${escapeHtml(pt)}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    `
+                    : '';
+
+                const noteHtml = info.note
+                    ? `
+                        <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-950 font-medium">
+                            ${escapeHtml(info.note)}
+                        </div>
+                    `
+                    : '';
+
+                bodyEl.innerHTML = `
+                    <p class="text-sm sm:text-base text-slate-700 leading-relaxed">${escapeHtml(info.summary)}</p>
+                    ${pointsHtml}
+                    ${noteHtml}
+                `;
+
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+
+                const closeBtn = document.getElementById('custom-info-modal-close');
+                if (closeBtn) closeBtn.focus();
+            }
+
+            function closeCustomInfoModal() {
+                const modal = document.getElementById('custom-info-modal');
+                if (!modal || modal.classList.contains('hidden')) return;
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+                if (customModalLastFocus && typeof customModalLastFocus.focus === 'function') {
+                    customModalLastFocus.focus();
+                }
+            }
+
+            function handleHeroCustomButtonClick(event) {
+                const btn = event.currentTarget;
+                const idx = Number(btn.getAttribute('data-custom-btn-index'));
+                openCustomInfoModal(idx);
+            }
+
+            function initHeroCustomButtons() {
+                [1, 2, 3].forEach((idx) => {
+                    const btn = document.getElementById(`hero-custom-btn-${idx}`);
+                    const dataObj = CUSTOM_BUTTONS_MAP[idx];
+                    if (btn && dataObj) {
+                        if (dataObj.buttonLabel) {
+                            btn.textContent = dataObj.buttonLabel;
+                        }
+                        btn.addEventListener('click', handleHeroCustomButtonClick);
+                    }
+                });
+
+                const closeBtn = document.getElementById('custom-info-modal-close');
+                const backdrop = document.getElementById('custom-info-modal');
+                if (closeBtn) closeBtn.addEventListener('click', closeCustomInfoModal);
+                if (backdrop) {
+                    backdrop.addEventListener('click', (e) => {
+                        if (e.target.id === 'custom-info-modal') {
+                            closeCustomInfoModal();
+                        }
+                    });
+                }
+            }
+
+            // ==================== 1. 6 МОДУЛЬ ЖАНА КТП МААЛЫМАТТАРЫ ====================
+            const MODULES_DATA = [
+                {
+                    id: 'python-ai',
+                    title: 'Python & Жасалма Интеллект',
+                    badge: 'Модуль 1 • 34 саат',
+                    summary: 'Python тилинде маалыматтарды иштетүү, алгоритмдик ой жүгүртүү, визуализация жана жасалма интеллекттин негизги моделдерин сабакта колдонуу.',
+                    lesson45: [
+                        { time: '00–07 мүн', stage: 'Уюштуруу & көйгөй коюу', desc: 'Реалдуу маалымат топтомундагы аномалияны табуу боюнча кыска кейс.' },
+                        { time: '07–18 мүн', stage: 'Жаңы материал (30% теория)', desc: 'Тизмелер/сөздүктөр, функциялар жана моделдин логикасын түшүндүрүү.' },
+                        { time: '18–38 мүн', stage: 'Практикалык лаборатория (70%)', desc: 'Google Colab же локалдык чөйрөдө код жазуу, тестирлөө жана мүчүлүштүктөрдү оңдоо.' },
+                        { time: '38–45 мүн', stage: 'Жыйынтыктоо & рефлексия', desc: 'Натыйжаны салыштыруу, рубрика боюнча өзүн-өзү баалоо жана үй тапшырмасы.' }
+                    ],
+                    bloomGoals: [
+                        'Билүү & Түшүнүү: Маалымат тибин, шарттык операторду, циклди жана функцияны туура айырмалайт.',
+                        'Колдонуу & Талдоо: Киргизилген маалыматты тазалап, алгоритм аркылуу мыйзам ченемдүүлүктү табат.',
+                        'Баалоо & Түзүү: Кичи программа же жөнөкөй ЖИ/эвристикалык модел түзүп, натыйжасын текшерет.'
+                    ],
+                    rubric: [
+                        { level: 'Жогорку (4–5)', criteria: 'Алгоритм оптималдуу, код таза иштейт, чектен чыккан учурлар текшерилген, жыйынтык негизделген.' },
+                        { level: 'Орто (3)', criteria: 'Негизги код иштейт, майда синтаксистик же логикалык тактоолорду мугалимдин жардамы менен оңдойт.' },
+                        { level: 'Баштапкы (2)', criteria: 'Даяр шаблонду өзгөртүүдө кыйналат, түшүндүрмө жана алгоритмдик байланыш жетишсиз.' }
+                    ],
+                    ktp: [
+                        '№1 | 2 саат | Python чөйрөсү, өзгөрмөлөр, типтер жана киргизүү-чыгаруу | Практика: эсептегич жана маалымат форматы',
+                        '№2 | 4 саат | Шарттык конструкциялар жана циклдер | Алгоритмдик маселелерди чыгаруу',
+                        '№3 | 4 саат | Тизмелер, кортеждер, сөздүктөр жана саптар | Таблицалык/тексттик маалыматты иштетүү',
+                        '№4 | 4 саат | Функциялар жана модулдук программалоо | Кодду кайталануусуз бөлүктөргө бөлүү',
+                        '№5 | 6 саат | Маалыматты талдоо жана графиктер (CSV, статистика) | Аба ырайы же мектеп сурамжылоосун анализдөө',
+                        '№6 | 8 саат | Жасалма интеллектке киришүү: эрежеге негизделген жана үйрөнүүчү моделдер | Классификациялоо көнүгүүсү',
+                        '№7 | 6 саат | Жыйынтыктоочу долбоор жана презентация | Окуучунун практикалык долбоорун коргоо'
+                    ]
+                },
+                {
+                    id: 'arduino-iot',
+                    title: 'Arduino & IoT / Мехатроника',
+                    badge: 'Модуль 2 • 34 саат',
+                    summary: 'Микроконтроллерлер, санариптик/аналогдук сенсорлор, кыймылдаткычтар, ШИМ (PWM) башкаруу жана акылдуу түзүлүштөрдүн прототибин чогултуу.',
+                    lesson45: [
+                        { time: '00–07 мүн', stage: 'Инженердик тапшырма', desc: 'Автоматтык сугаруу, жарык же коопсуздук системасынын сценарийи.' },
+                        { time: '07–18 мүн', stage: 'Схема жана сигнал теориясы', desc: 'GPIO пиндер, тартуу резисторлору, ШИМ жана сенсордун көрсөткүчү.' },
+                        { time: '18–38 мүн', stage: 'Монтаж жана прошивка', desc: 'Wokwi симуляторунда же реалдуу платада схема чогултуп, код жүктөө.' },
+                        { time: '38–45 мүн', stage: 'Сыноо & коопсуздук текшерүүсү', desc: 'Сенсордун чегин текшерүү, туташуунун коопсуздугу жана жыйынтык.' }
+                    ],
+                    bloomGoals: [
+                        'Билүү & Түшүнүү: Санариптик жана аналогдук сигналдардын айырмасын, схема элементтеринин ролун билет.',
+                        'Колдонуу & Талдоо: Сенсордон келген мааниге жараша реле, диод же сервомоторду башкаруу логикасын түзөт.',
+                        'Баалоо & Түзүү: Көйгөйдү чечүүчү мехатроникалык прототип куруп, каталарын аныктап оңдойт.'
+                    ],
+                    rubric: [
+                        { level: 'Жогорку (4–5)', criteria: 'Схема туура жана коопсуз чогултулган, код комментарийленген, сенсор логикасы так иштейт.' },
+                        { level: 'Орто (3)', criteria: 'Схема негизинен туура, айрым параметрлерди тактоо же симуляцияда текшерүү талап кылынат.' },
+                        { level: 'Баштапкы (2)', criteria: 'Пиндерди туташтырууда же цикл/шарт логикасында каталар кетет, өз алдынча текшерүүсүз калат.' }
+                    ],
+                    ktp: [
+                        '№1 | 2 саат | Мехатроникага киришүү жана электр коопсуздугу | Коопсуз иштөө эрежелери жана симулятор менен таанышуу',
+                        '№2 | 4 саат | Санариптик чыгуу жана кирүү (LED, баскыч) | Светофор жана баскыч менен башкаруу',
+                        '№3 | 4 саат | Аналогдук сигналдар жана ШИМ (PWM) | Потенциометр жана жарыктыкты/ылдамдыкты башкаруу',
+                        '№4 | 6 саат | Сенсорлор менен иштөө (температура, жарык, аралык) | Көрсөткүчтөрдү монитордо чыгаруу',
+                        '№5 | 6 саат | Кыймылдаткычтар жана кыймыл механикасы | Серво жана туруктуу ток кыймылдаткычы менен иштөө',
+                        '№6 | 8 саат | IoT түшүнүгү жана автоматташтырылган система | Телеметрия же автоматтык башкаруу сценарийи',
+                        '№7 | 6 саат | Финалдык мехатроникалык долбоор | Прототипти көрсөтүү жана түшүндүрүү'
+                    ]
+                },
+                {
+                    id: 'cad-3d',
+                    title: '3D-CAD & Прототиптөө',
+                    badge: 'Модуль 3 • 28 саат',
+                    summary: 'Параметрдик 3D-моделдөө, өлчөмдөрдү так сактоо, тетиктердин биригүүсү (допуск) жана 3D-басып чыгарууга даярдоо.',
+                    lesson45: [
+                        { time: '00–06 мүн', stage: 'Чийме жана форманы талдоо', desc: 'Деталдын геометриясын жөнөкөй примитивдерге жана экструзияларга бөлүү.' },
+                        { time: '06–16 мүн', stage: 'CAD инструменттери', desc: 'Эскиз (Sketch), өлчөмдөр, фаска/скругление жана тешиктердин логикасы.' },
+                        { time: '16–38 мүн', stage: '3D-модель түзүү', desc: 'Onshape же CAD чөйрөсүндө деталды чогултуу жана биригүү жерлерин текшерүү.' },
+                        { time: '38–45 мүн', stage: 'Экспорт жана сапатты текшерүү', desc: 'STL/чечим текшерүү, геометриялык каталарды табуу.' }
+                    ],
+                    bloomGoals: [
+                        'Билүү & Түшүнүү: Проекцияларды, өлчөмдөрдү коюу эрежесин жана 3D-моделдин негизги операцияларын билет.',
+                        'Колдонуу & Талдоо: Деталдын өлчөмдөрүн эсептеп, биригүүчү бөлүктөрдүн туура келишин текшерет.',
+                        'Баалоо & Түзүү: Инженердик муктаждыкка ылайык 3D-модель жаратып, кемчиликтерин жоёт.'
+                    ],
+                    rubric: [
+                        { level: 'Жогорку (4–5)', criteria: 'Өлчөмдөр толук жана так берилген, эскиз толук чектелген, биригүүсү туура.' },
+                        { level: 'Орто (3)', criteria: 'Моделдин негизги формасы бар, айрым өлчөмдөр же майда элементтер так эмес.' },
+                        { level: 'Баштапкы (2)', criteria: 'Геометриялык катыштар сакталган эмес, модель бөлүнүп же ката жасалган.' }
+                    ],
+                    ktp: [
+                        '№1 | 4 саат | Инженердик графика жана 3D-моделдөөгө киришүү | Эскиз түзүү жана өлчөмдөрдү берүү',
+                        '№2 | 6 саат | Негизги 3D операциялар (Extrude, Revolve, Cut) | Корпус жана кронштейн моделдөө',
+                        '№3 | 6 саат | Түйүндөрдү бириктирүү жана тетиктердин шайкештиги | Вал, тешик жана бекиткич элементтер',
+                        '№4 | 6 саат | Жыйынды (Assembly) жана кыймылды текшерүү | Деталдардын бирге иштешин симуляциялоо',
+                        '№5 | 6 саат | 3D-басып чыгарууга даярдоо жана долбоор | Моделди экспорттоо жана коргоо'
+                    ]
+                },
+                {
+                    id: 'olympiad-algo',
+                    title: 'Олимпиадалык алгоритмдер',
+                    badge: 'Модуль 4 • 34 саат',
+                    summary: 'Татаалдык баалоо (O-нотация), издөө жана сорттоо алгоритмдери, динамикалык программалоо, графтар жана олимпиадалык маселелерди чыгаруу.',
+                    lesson45: [
+                        { time: '00–08 мүн', stage: 'Олимпиадалык маселе', desc: 'Шартты талдоо, чектөөлөрдү (N, убакыт, эс) баалоо.' },
+                        { time: '08–18 мүн', stage: 'Алгоритмдик идея', desc: 'Жөнөкөй ыкмадан оптималдуу ыкмага өтүүнү түшүндүрүү.' },
+                        { time: '18–39 мүн', stage: 'Коддоо жана тесттер', desc: 'Код жазуу, чектен чыккан жана чоң тесттерде текшерүү.' },
+                        { time: '39–45 мүн', stage: 'Талдоо (Editorial)', desc: 'Башка чечимдер менен салыштыруу жана каталарды белгилөө.' }
+                    ],
+                    bloomGoals: [
+                        'Билүү & Түшүнүү: Убакыт жана эс татаалдыгын, базалык алгоритмдердин иштөө принцибин билет.',
+                        'Колдонуу & Талдоо: Маселенин чектөөсүнө жараша ылайыктуу алгоритмди тандап, чечимдеги кемчиликти табат.',
+                        'Баалоо & Түзүү: Олимпиадалык маселеге туура жана натыйжалуу алгоритм ойлоп таап, коддойт.'
+                    ],
+                    rubric: [
+                        { level: 'Жогорку (4–5)', criteria: 'Бардык тесттерден өтөт, убакыт/эс чектөөсүнө туура келет, логикасы так.' },
+                        { level: 'Орто (3)', criteria: 'Жөнөкөй тесттерден өтөт, чоң же чектик тесттерде оптималдаштыруу талап кылынат.' },
+                        { level: 'Баштапкы (2)', criteria: 'Маселенин шартын толук формалдаштырууда кыйынчылыктар бар.' }
+                    ],
+                    ktp: [
+                        '№1 | 4 саат | Алгоритмдердин татаалдыгы жана чектөөлөрдү талдоо | Убакыт жана эс баалоо көнүгүүлөрү',
+                        '№2 | 6 саат | Сорттоо жана бинардык издөө | Издөө маселелерин чыгаруу',
+                        '№3 | 6 саат | Префикс суммалары жана эки көрсөткүч | Интервалдык сурамдарды тез эсептөө',
+                        '№4 | 8 саат | Динамикалык программалоонун негиздери | 1D жана 2D ДП маселелери',
+                        '№5 | 6 саат | Графтар жана кыска жол/байланыштуулук | Тармак жана маршрут маселелери',
+                        '№6 | 4 саат | Машыгуу туру жана каталарды талдоо | Өз алдынча маселе чыгаруу'
+                    ]
+                },
+                {
+                    id: 'networks-cyber',
+                    title: 'Тармактар & Киберкоопсуздук',
+                    badge: 'Модуль 5 • 28 саат',
+                    summary: 'Компьютердик тармактардын түзүлүшү, IP-адрестештирүү, DNS/DHCP, тармактык диагностика жана санариптик гигиена / киберкоопсуздук.',
+                    lesson45: [
+                        { time: '00–06 мүн', stage: 'Коопсуздук же тармак кейси', desc: 'Байланыш үзүлүү же фишинг/коопсуздук жагдайын талдоо.' },
+                        { time: '06–16 мүн', stage: 'Тармак принциптери', desc: 'IP, маска, шлюз, протоколдор жана коргонуунун негизги эрежелери.' },
+                        { time: '16–38 мүн', stage: 'Симулятор / практика', desc: 'Тармак схемасын чогултуу, ping/маршрут текшерүү же коопсуздук аудити.' },
+                        { time: '38–45 мүн', stage: 'Корутунду', desc: 'Негизги эрежелерди бекемдөө.' }
+                    ],
+                    bloomGoals: [
+                        'Билүү & Түшүнүү: IP-адрестин түзүлүшүн, негизги тармактык протоколдорду жана коркунучтардын түрлөрүн билет.',
+                        'Колдонуу & Талдоо: Тармактагы туташуу көйгөйүн аныктап, коопсуздук тобокелдиктерин баалайт.',
+                        'Баалоо & Түзүү: Мектеп/үй тармагынын схемасын пландап, коргонуу чараларын сунуштайт.'
+                    ],
+                    rubric: [
+                        { level: 'Жогорку (4–5)', criteria: 'Тармак туура конфигурацияланган, диагностика так жүргүзүлөт, коопсуздук чаралары толук.' },
+                        { level: 'Орто (3)', criteria: 'Негизги туташуу иштейт, айрым параметрлерди же эрежелерди тактоо керек.' },
+                        { level: 'Баштапкы (2)', criteria: 'Даректерди жана коргонуу түшүнүктөрүн чаташтырат.' }
+                    ],
+                    ktp: [
+                        '№1 | 6 саат | Тармактар, IP-даректер жана маскалар | Тармак түзүлүшүн моделдөө',
+                        '№2 | 6 саат | Маршрутизация, DNS жана DHCP | Пакеттердин жүрүшүн байкоо',
+                        '№3 | 8 саат | Киберкоопсуздук, сырсөздөр жана аутентификация | Коргонуу механизмдерин талдоо',
+                        '№4 | 8 саат | Санариптик этика, маалыматты коргоо жана долбоор | Коопсуздук чек-листин түзүү'
+                    ]
+                },
+                {
+                    id: 'base-prep',
+                    title: 'Базалык Информатика (профилге даярдык)',
+                    badge: 'Модуль 6 • 24 саат',
+                    summary: '7–9-класстардагы базалык информатиканы инженердик профилге өтүүгө даярдоочу көпүрө: логика, маалымат коддоо, алгоритмдер жана долбоордук ойлоо.',
+                    lesson45: [
+                        { time: '00–07 мүн', stage: 'Кызыктыруучу суроо', desc: 'Күнүмдүк турмуштагы логикалык жана санариптик мисалдар.' },
+                        { time: '07–18 мүн', stage: 'Түшүнүктү бекемдөө', desc: 'Бинардык сандар, логикалык операциялар жана блок-схемалар.' },
+                        { time: '18–38 мүн', stage: 'Практикалык көнүгүү', desc: 'Интерактивдүү тапшырмалар жана алгачкы программалык кадамдар.' },
+                        { time: '38–45 мүн', stage: 'Рефлексия', desc: 'Эмне үйрөндүм жана эмнени такташым керек?' }
+                    ],
+                    bloomGoals: [
+                        'Билүү & Түшүнүү: Маалыматты коддоо, логикалык туюнтмалар жана алгоритм касиеттерин түшүнөт.',
+                        'Колдонуу & Талдоо: Тексттик маселени блок-схема же кадамдык алгоритмге айландырат.',
+                        'Баалоо & Түзүү: Профилдик багытка өтүүгө даяр болгон жөнөкөй долбоорду сунуштайт.'
+                    ],
+                    rubric: [
+                        { level: 'Жогорку (4–5)', criteria: 'Базалык түшүнүктөрдү так колдонот, логикалык ырааттуулукту сактайт.' },
+                        { level: 'Орто (3)', criteria: 'Жалпы түшүнүгү бар, татаалыраак тапшырмаларда жардамга муктаж.' },
+                        { level: 'Баштапкы (2)', criteria: 'Негизги түшүнүктөрдү кайталап өздөштүрүүнү талап кылат.' }
+                    ],
+                    ktp: [
+                        '№1 | 6 саат | Маалымат, эсептөө системалары жана коддоо | Экилик система жана коддоо көнүгүүлөрү',
+                        '№2 | 6 саат | Логиканын негиздери жана таблицалар | Логикалык шарттарды талдоо',
+                        '№3 | 6 саат | Алгоритмдер, блок-схемалар жана аткаруучулар | Алгоритм түзүү жана текшерүү',
+                        '№4 | 6 саат | Инженердик багытты тандоого даярдык | Кичи долбоорду даярдоо'
+                    ]
+                }
+            ];
+
+            function renderModules() {
+                const grid = document.getElementById('modules-grid');
+                if (!grid) return;
+                grid.innerHTML = '';
+
+                MODULES_DATA.forEach((mod, idx) => {
+                    const card = document.createElement('div');
+                    card.className = 'card-elevated rounded-3xl p-6 flex flex-col justify-between';
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-3.5">
+                                <span class="px-3 py-1 rounded-full bg-blue-50 border border-blue-200/70 text-blue-700 text-xs font-bold">${escapeHtml(mod.badge)}</span>
+                                <span class="inline-flex items-center gap-1 text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
+                                    <span>КТП .docx</span>
+                                </span>
+                            </div>
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Модуль 0${idx + 1}</div>
+                            <h3 class="font-display text-lg sm:text-xl font-extrabold text-slate-900 mb-2.5 leading-snug">${escapeHtml(mod.title)}</h3>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">${escapeHtml(mod.summary)}</p>
+                        </div>
+                        <button type="button" data-open-module="${escapeHtml(mod.id)}" class="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-bold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-sm">
+                            <span>Сабак түзүмүн &amp; КТПны ачуу</span>
+                            <span aria-hidden="true">→</span>
+                        </button>
+                    `;
+                    grid.appendChild(card);
+                });
+
+                grid.querySelectorAll('[data-open-module]').forEach((btn) => {
+                    btn.addEventListener('click', () => {
+                        const modId = btn.getAttribute('data-open-module');
+                        openModuleModal(modId);
+                    });
+                });
+            }
+
+            let lastFocusedElement = null;
+
+            function openModuleModal(moduleId) {
+                const mod = MODULES_DATA.find((m) => m.id === moduleId);
+                if (!mod) return;
+
+                lastFocusedElement = document.activeElement;
+                const modal = document.getElementById('module-modal');
+                const badgeEl = document.getElementById('modal-module-badge');
+                const titleEl = document.getElementById('modal-module-title');
+                const bodyEl = document.getElementById('modal-module-body');
+
+                badgeEl.textContent = mod.badge;
+                titleEl.textContent = mod.title;
+
+                const lessonHtml = mod.lesson45.map((step) => `
+                    <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                        <span class="px-2.5 py-1 rounded-lg bg-blue-600 text-white text-xs font-extrabold shrink-0 w-fit">${escapeHtml(step.time)}</span>
+                        <div>
+                            <div class="font-bold text-slate-900 text-xs sm:text-sm">${escapeHtml(step.stage)}</div>
+                            <div class="text-xs text-slate-600 mt-0.5">${escapeHtml(step.desc)}</div>
+                        </div>
+                    </div>
+                `).join('');
+
+                const bloomHtml = mod.bloomGoals.map((g) => `
+                    <li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700">
+                        <span class="text-teal-600 font-extrabold mt-0.5">•</span>
+                        <span>${escapeHtml(g)}</span>
+                    </li>
+                `).join('');
+
+                const rubricHtml = mod.rubric.map((r) => `
+                    <div class="p-3.5 rounded-2xl border border-slate-200/80 bg-white">
+                        <div class="text-xs font-extrabold text-indigo-700 mb-1">${escapeHtml(r.level)}</div>
+                        <div class="text-xs sm:text-sm text-slate-700">${escapeHtml(r.criteria)}</div>
+                    </div>
+                `).join('');
+
+                const parsedRows = parseKtpRows(mod.ktp);
+                const ktpTablePreviewHtml = `
+                    <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-950/90">
+                        <table class="w-full text-left border-collapse text-xs min-w-[540px]">
+                            <thead>
+                                <tr class="bg-blue-950 text-blue-200 border-b border-slate-800">
+                                    <th class="py-2.5 px-3 font-bold">Бөлүм №</th>
+                                    <th class="py-2.5 px-3 font-bold">Саат</th>
+                                    <th class="py-2.5 px-3 font-bold">Тема жана мазмуну</th>
+                                    <th class="py-2.5 px-3 font-bold">Практикалык иш / натыйжа</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ktp-raw-text" class="divide-y divide-slate-800/80 text-slate-200">
+                                ${parsedRows.map((r) => `
+                                    <tr class="hover:bg-slate-900/80 transition-colors">
+                                        <td class="py-2.5 px-3 font-bold text-blue-300 whitespace-nowrap">${escapeHtml(r.num)}</td>
+                                        <td class="py-2.5 px-3 font-bold text-teal-300 whitespace-nowrap">${escapeHtml(r.hours)}</td>
+                                        <td class="py-2.5 px-3 font-semibold text-white">${escapeHtml(r.topic)}</td>
+                                        <td class="py-2.5 px-3 text-slate-300">${escapeHtml(r.practice)}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+
+                bodyEl.innerHTML = `
+                    <div>
+                        <h4 class="font-display font-extrabold text-base text-slate-900 mb-3">1. 45 мүнөттүк сабактын түзүмү</h4>
+                        <div class="space-y-2.5">${lessonHtml}</div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="p-4 rounded-2xl bg-teal-50/60 border border-teal-200/80">
+                            <h4 class="font-display font-extrabold text-sm sm:text-base text-slate-900 mb-2.5">2. Блум таксономиясы боюнча максаттар</h4>
+                            <ul class="space-y-2">${bloomHtml}</ul>
+                        </div>
+                        <div class="space-y-2.5">
+                            <h4 class="font-display font-extrabold text-sm sm:text-base text-slate-900">3. Баалоо рубрикасы</h4>
+                            ${rubricHtml}
+                        </div>
+                    </div>
+
+                    <div class="p-4 sm:p-5 rounded-2xl bg-slate-900 text-slate-100 border border-slate-800">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-3.5">
+                            <div>
+                                <h4 class="font-display font-extrabold text-sm sm:text-base text-white">4. Календардык-тематикалык план (КТП)</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">Басканда Word (.docx) файлы жүктөлөт жана Word/Документке чаптоого (Ctrl+V) даярдалат</p>
+                            </div>
+                            <button id="copy-ktp-btn" type="button" class="px-4 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-extrabold text-xs transition-colors flex items-center gap-1.5 cursor-pointer shadow">
+                                <span>Word форматында көчүрүү (.docx)</span>
+                            </button>
+                        </div>
+                        ${ktpTablePreviewHtml}
+                        <div id="copy-ktp-feedback" class="hidden mt-3 text-xs font-bold text-teal-300"></div>
+                    </div>
+                `;
+
+                const copyBtn = document.getElementById('copy-ktp-btn');
+                const feedbackEl = document.getElementById('copy-ktp-feedback');
+                if (copyBtn) {
+                    copyBtn.addEventListener('click', () => {
+                        copyKtpAsWord(mod).then(({ copiedToClipboard, filename }) => {
+                            if (feedbackEl) {
+                                feedbackEl.classList.remove('hidden');
+                                feedbackEl.textContent = copiedToClipboard
+                                    ? `КТП Word форматында көчүрүлдү жана "${filename}" (.docx) файлы жүктөлдү!`
+                                    : `"${filename}" Word (.docx) файлы жүктөлдү жана таблица тексти алмашуу буферине көчүрүлдү!`;
+                            }
+                        });
+                    });
+                }
+
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+
+                const closeBtn = document.getElementById('module-modal-close');
+                if (closeBtn) closeBtn.focus();
+            }
+
+            function closeModuleModal() {
+                const modal = document.getElementById('module-modal');
+                if (!modal || modal.classList.contains('hidden')) return;
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+                if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+                    lastFocusedElement.focus();
+                }
+            }
+
+            document.getElementById('module-modal-close').addEventListener('click', closeModuleModal);
+            document.getElementById('module-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'module-modal') {
+                    closeModuleModal();
+                }
+            });
+
+            // ==================== 2. ВИРТУАЛДЫК ЛАБОРАТОРИЯЛАР (#tools) ====================
+            const TOOLS_DATA = {
+                wokwi: {
+                    name: 'Wokwi — Arduino, ESP32 жана сенсорлор симулятору',
+                    tagline: 'Физикалык микроконтроллерлер жетишпеген учурда сабакта схема чогултуу жана кодду текшерүү.',
+                    steps: [
+                        'Wokwi баракчасын ачып, Arduino Uno же ESP32 шаблонун тандаңыз.',
+                        'diagram.json аркылуу светодиод, баскыч, потенциометр же ультраүн сенсорун кошуп, пиндерди байланыштырыңыз.',
+                        'sketch.ino же MicroPython кодун жазып, Старт баскычы менен реалдуу убакыттагы сигналды байкаңыз.',
+                        'Окуучуларга даяр схеманы шилтеме аркылуу берип, катаны табуу (debugging) тапшырмасын коюңуз.'
+                    ],
+                    tip: 'Мугалимге кеңеш: Алгач эки окуучуга бир компьютерде «Айдоочу жана Штурман» ыкмасында иштөөнү сунуштаңыз.'
+                },
+                colab: {
+                    name: 'Google Colab — Python, маалымат талдоо жана ЖИ блокноту',
+                    tagline: 'Окуучулардын компьютерине оор программа орнотпостон эле Python кодун жана моделдерди иштетүү.',
+                    steps: [
+                        'Мугалим даяр .ipynb блокнотун түзүп, «Көрүү үчүн гана» же көчүрүү мүмкүнчүлүгү менен бөлүшөт.',
+                        'Окуучу «Save a copy in Drive» баскычы менен өз көчүрмөсүн алып, уячаларды (cells) кезек-кезеги менен иштетет.',
+                        'Маалыматтарды таблица/график түрүндө визуалдаштырып, жыйынтыгын кыска текст менен негиздейт.',
+                        'Сабак соңунда окуучу өз блокнотунун шилтемесин же кодун текшерүүгө тапшырат.'
+                    ],
+                    tip: 'Мугалимге кеңеш: Ар бир уячага 2–3 саптан ашык код жазбай, максатын ачык жазып коюңуз.'
+                },
+                onshape: {
+                    name: 'Onshape — Браузердеги параметрдик 3D-CAD моделдөө',
+                    tagline: 'Чийме, өлчөм жана 3D-деталдарды онлайн чөйрөдө куруу жана чогултуу.',
+                    steps: [
+                        'Тегиздикти (Front, Top же Right) тандап, Sketch баскычы менен жалпак контурду чийиңиз.',
+                        'Dimension куралы менен сызыктардын жана тешиктердин так өлчөмдөрүн коюңуз.',
+                        'Extrude, Revolve же Fillet операциялары менен көлөмдүү формага өтүңүз.',
+                        'Бир нече деталды бириктирип, бөлүктөрдүн бири-бирине тийишпей турганын текшериңиз.'
+                    ],
+                    tip: 'Мугалимге кеңеш: Алгач өлчөмдөрдү өзгөрткөндө модель кантип өзгөрөрүн көрсөтүп, параметрдик ойлоону үйрөтүңүз.'
+                },
+                packettracer: {
+                    name: 'Cisco Packet Tracer — Компьютердик тармактар симулятору',
+                    tagline: 'Коммутатор, роутер, IP-адрестештирүү жана пакеттердин жүрүшүн визуалдык изилдөө.',
+                    steps: [
+                        'Жумушчу талаага PC, Switch жана Router түзүлүштөрүн жайгаштырып, кабелдер менен туташтырыңыз.',
+                        'Түзүлүштөргө IP-дарек, маска жана шлюз (Default Gateway) орнотуңуз.',
+                        'Simulation режимине өтүп, ICMP/ping пакетинин кандай жол менен жөнөтүлүп, кайтарын көрүңүз.',
+                        'Даректи атайылап туура эмес коюп, окуучудан байланыш эмне үчүн үзүлгөнүн таптырыңыз.'
+                    ],
+                    tip: 'Мугалимге кеңеш: «Байланыш иштебей жатат — себебин тап» деген кыска диагностикалык тапшырмалар өтө натыйжалуу.'
+                }
+            };
+
+            function renderToolPanel(toolKey) {
+                const tool = TOOLS_DATA[toolKey] || TOOLS_DATA.wokwi;
+                const panel = document.getElementById('tool-detail-panel');
+                if (!panel) return;
+
+                panel.innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                        <div class="lg:col-span-5 space-y-3.5">
+                            <h3 class="font-display text-xl font-extrabold text-slate-900 leading-snug">${escapeHtml(tool.name)}</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">${escapeHtml(tool.tagline)}</p>
+                            <div class="p-4 rounded-2xl bg-amber-50/90 border border-amber-200/90 text-xs sm:text-sm text-amber-950 font-medium leading-relaxed">
+                                ${escapeHtml(tool.tip)}
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7 space-y-2.5">
+                            <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-1">Сабакта колдонуу кадамдары</div>
+                            ${tool.steps.map((st, idx) => `
+                                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-3 text-xs sm:text-sm text-slate-700">
+                                    <span class="w-6 h-6 rounded-full bg-blue-600 text-white font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-sm">${idx + 1}</span>
+                                    <span class="leading-relaxed">${escapeHtml(st)}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            document.querySelectorAll('.tool-tab-btn').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const key = btn.getAttribute('data-tool-tab');
+                    document.querySelectorAll('.tool-tab-btn').forEach((b) => {
+                        b.className = 'tool-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer';
+                    });
+                    btn.className = 'tool-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-blue-600 text-white shadow-md shadow-blue-600/20 transition-all cursor-pointer';
+                    renderToolPanel(key);
+                });
+            });
+
+            // ==================== 3. ПЕДАГОГДОРДУН 5 СУРООЛУК ДИАГНОСТИКАСЫ (#test) ====================
+            const TEST_QUESTIONS = [
+                {
+                    id: 'q1',
+                    question: '1. Мектебиңиздеги компьютердик каана жана интернет абалы кандай?',
+                    options: [
+                        { label: 'Компьютерлер бар, интернет орточо/туруктуу (браузердик куралдар иштейт)', profile: 'Python & ЖИ / Тармактар' },
+                        { label: 'Компьютерлер жетиштүү, кошумча микроконтроллер/сенсорлор же симулятор колдонулат', profile: 'Arduino & IoT / Мехатроника' },
+                        { label: 'Компьютер саны чектелүү же кезек менен колдонулат', profile: 'Базалык Информатика & Виртуалдык лаборатория' }
+                    ]
+                },
+                {
+                    id: 'q2',
+                    question: '2. Окуучулардын математикалык жана алгоритмдик даярдыгы кандай?',
+                    options: [
+                        { label: 'Логика жана маселе чыгарууга кызыккан окуучулар көп', profile: 'Олимпиадалык алгоритмдер' },
+                        { label: 'Практикалык иштерди, конструкциялоону жана модель жасоону жактырышат', profile: 'Arduino & IoT / Мехатроника' },
+                        { label: 'Базалык түшүнүктөрдү бекемдөө жана системалаштыруу талап кылынат', profile: 'Базалык Информатика (профилге даярдык)' }
+                    ]
+                },
+                {
+                    id: 'q3',
+                    question: '3. Апталык сабак же ийрим жүктөмү кандай пландалган?',
+                    options: [
+                        { label: 'Профилдик же тереңдетилген сабак (жумасына 2–4 саат)', profile: 'Python & Жасалма Интеллект' },
+                        { label: 'Мектепте же ийримде үзгүлтүксүз практикалык сабактар', profile: 'Arduino & IoT / Мехатроника' },
+                        { label: 'Кыска курс же кошумча саат (жумасына 1–2 саат)', profile: 'Тармактар & Киберкоопсуздук' }
+                    ]
+                },
+                {
+                    id: 'q4',
+                    question: '4. Окуучулар кайсы багыттагы долбоорлорго көбүрөөк тартылат?',
+                    options: [
+                        { label: 'Маалыматтарды талдоо, программалар жана интеллектуалдык жардамчылар', profile: 'Python & Жасалма Интеллект' },
+                        { label: '3D-моделдер, деталдар жана визуалдык прототиптер', profile: '3D-CAD & Прототиптөө' },
+                        { label: 'Тармактык коопсуздук, сайт/сервис жана логикалык таймаштар', profile: 'Тармактар & Киберкоопсуздук' }
+                    ]
+                },
+                {
+                    id: 'q5',
+                    question: '5. Мугалим катары кайсы багытта методикалык колдоо сизге азыр эң керек?',
+                    options: [
+                        { label: 'КТП, сабак пландары жана код/модел боюнча практикалык кейстер', profile: 'Python & Жасалма Интеллект' },
+                        { label: 'Схема, сенсор жана конкурстук долбоорлорду даярдоо методикасы', profile: 'Arduino & IoT / Мехатроника' },
+                        { label: 'Олимпиадалык маселелерди талдоо жана баалоо рубрикалары', profile: 'Олимпиадалык алгоритмдер' }
+                    ]
+                }
+            ];
+
+            let currentTestStep = 0;
+            const testAnswers = {};
+
+            function renderTestQuestion() {
+                const qContainer = document.getElementById('test-question-container');
+                const rContainer = document.getElementById('test-result-container');
+                const stepLabel = document.getElementById('test-step-label');
+                const percentLabel = document.getElementById('test-percent-label');
+                const progressBar = document.getElementById('test-progress-bar');
+
+                if (!qContainer || !rContainer) return;
+
+                if (currentTestStep >= TEST_QUESTIONS.length) {
+                    qContainer.classList.add('hidden');
+                    rContainer.classList.remove('hidden');
+                    stepLabel.textContent = 'Диагностика аяктады (5 / 5)';
+                    percentLabel.textContent = '100%';
+                    progressBar.style.width = '100%';
+                    renderTestResult();
+                    return;
+                }
+
+                rContainer.classList.add('hidden');
+                qContainer.classList.remove('hidden');
+
+                const q = TEST_QUESTIONS[currentTestStep];
+                const pct = Math.round(((currentTestStep + 1) / TEST_QUESTIONS.length) * 100);
+                stepLabel.textContent = `Суроо ${currentTestStep + 1} / ${TEST_QUESTIONS.length}`;
+                percentLabel.textContent = `${pct}%`;
+                progressBar.style.width = `${pct}%`;
+
+                const selectedVal = testAnswers[q.id] || '';
+
+                qContainer.innerHTML = `
+                    <h3 class="font-display text-lg sm:text-xl font-extrabold text-slate-900 mb-4">${escapeHtml(q.question)}</h3>
+                    <div class="space-y-3">
+                        ${q.options.map((opt) => {
+                            const isChecked = selectedVal === opt.label;
+                            return `
+                                <label class="flex items-start gap-3 p-4 rounded-2xl border cursor-pointer transition-all ${isChecked ? 'border-blue-600 bg-blue-50/80 shadow-sm' : 'border-slate-200/90 bg-white hover:border-slate-300 hover:bg-slate-50'}">
+                                    <input type="radio" name="diag-option" value="${escapeHtml(opt.label)}" data-profile="${escapeHtml(opt.profile)}" ${isChecked ? 'checked' : ''} class="mt-1 accent-blue-600">
+                                    <span class="text-xs sm:text-sm font-medium text-slate-800 leading-relaxed">${escapeHtml(opt.label)}</span>
+                                </label>
+                            `;
+                        }).join('')}
+                    </div>
+                    <div class="flex items-center justify-between gap-3 mt-6 pt-4 border-t border-slate-100">
+                        <button id="test-prev-btn" type="button" ${currentTestStep === 0 ? 'disabled' : ''} class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-slate-300 text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:pointer-events-none transition-colors cursor-pointer">
+                            ← Артка
+                        </button>
+                        <button id="test-next-btn" type="button" class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-blue-600 hover:bg-blue-500 text-white shadow-md shadow-blue-600/20 transition-colors cursor-pointer">
+                            ${currentTestStep === TEST_QUESTIONS.length - 1 ? 'Жыйынтыкты көрүү' : 'Кийинки суроо →'}
+                        </button>
+                    </div>
+                `;
+
+                qContainer.querySelectorAll('input[name="diag-option"]').forEach((radio) => {
+                    radio.addEventListener('change', () => {
+                        testAnswers[q.id] = radio.value;
+                    });
+                });
+
+                document.getElementById('test-prev-btn').addEventListener('click', () => {
+                    if (currentTestStep > 0) {
+                        currentTestStep -= 1;
+                        renderTestQuestion();
+                    }
+                });
+
+                document.getElementById('test-next-btn').addEventListener('click', () => {
+                    const checked = qContainer.querySelector('input[name="diag-option"]:checked');
+                    if (!checked) {
+                        const firstRadio = qContainer.querySelector('input[name="diag-option"]');
+                        if (firstRadio) {
+                            firstRadio.checked = true;
+                            testAnswers[q.id] = firstRadio.value;
+                        }
+                    } else {
+                        testAnswers[q.id] = checked.value;
+                    }
+                    currentTestStep += 1;
+                    renderTestQuestion();
+                });
+            }
+
+            function computeRecommendedProfile() {
+                const counts = {};
+                TEST_QUESTIONS.forEach((q) => {
+                    const chosenLabel = testAnswers[q.id];
+                    const match = q.options.find((o) => o.label === chosenLabel);
+                    if (match) {
+                        counts[match.profile] = (counts[match.profile] || 0) + 1;
+                    }
+                });
+
+                let bestProfile = 'Arduino & IoT / Мехатроника';
+                let bestScore = -1;
+                Object.entries(counts).forEach(([prof, score]) => {
+                    if (score > bestScore) {
+                        bestScore = score;
+                        bestProfile = prof;
+                    }
+                });
+                return bestProfile;
+            }
+
+            function buildSurveyEmailBody(teacherInfo, recommendedProfile) {
+                const lines = [
+                    'ПЕДАГОГДОРДУН ДИАГНОСТИКАЛЫК СУРАМЖЫЛООСУ',
+                    '================================================',
+                    `Аты-жөнү: ${teacherInfo.name}`,
+                    `Аймагы: ${teacherInfo.region}`,
+                    `Мектеби: ${teacherInfo.school}`,
+                    `Телефон / WhatsApp: ${teacherInfo.phone}`,
+                    `Email: ${teacherInfo.email}`,
+                    `Сунушталган профиль: ${recommendedProfile}`,
+                    '',
+                    'Суроолор жана жооптор:'
+                ];
+
+                TEST_QUESTIONS.forEach((q, i) => {
+                    lines.push(`${i + 1}. ${q.question}`);
+                    lines.push(`   Жообу: ${testAnswers[q.id] || 'Белгиленген эмес'}`);
+                });
+
+                return lines.join('\n');
+            }
+
+            function renderTestResult() {
+                const rContainer = document.getElementById('test-result-container');
+                if (!rContainer) return;
+
+                const recommendedProfile = computeRecommendedProfile();
+
+                const summaryListHtml = TEST_QUESTIONS.map((q, idx) => `
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs">
+                        <div class="font-bold text-slate-800">${idx + 1}. ${escapeHtml(q.question)}</div>
+                        <div class="text-teal-700 font-semibold mt-1">Жооп: ${escapeHtml(testAnswers[q.id] || 'Белгиленген эмес')}</div>
+                    </div>
+                `).join('');
+
+                rContainer.innerHTML = `
+                    <div class="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-600 to-teal-600 text-white shadow-lg">
+                        <div class="text-xs font-bold uppercase tracking-wider text-blue-100">Диагностиканын сунушу</div>
+                        <h3 class="font-display text-xl sm:text-2xl font-extrabold mt-1">${escapeHtml(recommendedProfile)}</h3>
+                        <p class="text-xs sm:text-sm text-blue-50 mt-2 leading-relaxed">
+                            Сиздин жоопторуңузга ылайык ушул багыттан баштап, практикалык сабактарды жана симуляторлорду айкалыштыруу сунушталат.
+                        </p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Жоопторуңуздун кыскача тизмеси</div>
+                        ${summaryListHtml}
+                    </div>
+
+                    <form id="survey-send-form" class="pt-4 border-t border-slate-200 space-y-4">
+                        <div class="text-sm font-extrabold text-slate-900">
+                            Сурамжылоонун натыйжасын кат түрүндө жөнөтүү
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Аты-жөнү *</label>
+                                <input id="srv-name" type="text" required placeholder="Аты-жөнүңүз" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Аймагы *</label>
+                                <input id="srv-region" type="text" required placeholder="Облус, район / шаар" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Мектеби *</label>
+                                <input id="srv-school" type="text" required placeholder="Мектептин аталышы" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Телефон / WhatsApp *</label>
+                                <input id="srv-phone" type="tel" required placeholder="+996..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Email *</label>
+                            <input id="srv-email" type="email" required placeholder="name@example.com" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-3">
+                            <button id="srv-submit-btn" type="submit" class="px-6 py-3 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs sm:text-sm shadow transition-colors cursor-pointer">
+                                Натыйжаны жөнөтүү
+                            </button>
+                            <button id="srv-copy-btn" type="button" class="px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs sm:text-sm transition-colors cursor-pointer">
+                                Текстти көчүрүү
+                            </button>
+                            <button id="srv-restart-btn" type="button" class="px-4 py-3 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold text-xs sm:text-sm transition-colors cursor-pointer">
+                                Тестти кайра баштоо
+                            </button>
+                        </div>
+
+                        <div id="srv-status-box" class="hidden rounded-2xl p-4 text-xs sm:text-sm font-medium border"></div>
+                    </form>
+                `;
+
+                const collectSurveyData = () => ({
+                    name: document.getElementById('srv-name').value.trim(),
+                    region: document.getElementById('srv-region').value.trim(),
+                    school: document.getElementById('srv-school').value.trim(),
+                    phone: document.getElementById('srv-phone').value.trim(),
+                    email: document.getElementById('srv-email').value.trim()
+                });
+
+                document.getElementById('srv-copy-btn').addEventListener('click', () => {
+                    const info = collectSurveyData();
+                    const text = buildSurveyEmailBody(info, recommendedProfile);
+                    const statusBox = document.getElementById('srv-status-box');
+                    copyTextToClipboard(text).then((ok) => {
+                        statusBox.className = 'rounded-2xl p-4 text-xs sm:text-sm font-medium border bg-blue-50 border-blue-200 text-blue-900';
+                        statusBox.textContent = ok
+                            ? 'Сурамжылоонун толук тексти алмашуу буферине көчүрүлдү.'
+                            : 'Көчүрүү мүмкүн болбой калды.';
+                    });
+                });
+
+                document.getElementById('srv-restart-btn').addEventListener('click', () => {
+                    currentTestStep = 0;
+                    Object.keys(testAnswers).forEach((k) => delete testAnswers[k]);
+                    renderTestQuestion();
+                });
+
+                document.getElementById('survey-send-form').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const info = collectSurveyData();
+                    const submitBtn = document.getElementById('srv-submit-btn');
+                    const statusBox = document.getElementById('srv-status-box');
+                    const messageBody = buildSurveyEmailBody(info, recommendedProfile);
+                    const subject = `Педагог диагностикасы: ${info.name} (${info.school})`;
+
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Жөнөтүлүүдө...';
+                    statusBox.className = 'hidden rounded-2xl p-4 text-xs sm:text-sm font-medium border';
+
+                    const sentAjax = await sendViaFormSubmit(subject, messageBody, info.email, info.name);
+
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Натыйжаны жөнөтүү';
+
+                    if (sentAjax) {
+                        statusBox.className = 'rounded-2xl p-4 text-xs sm:text-sm font-semibold border bg-emerald-50 border-emerald-200 text-emerald-900';
+                        statusBox.textContent = 'Сурамжылоо натыйжасы кат түрүндө ийгиликтүү жөнөтүлдү. Рахмат!';
+                    } else {
+                        openMailtoClient(subject, messageBody);
+                        statusBox.className = 'rounded-2xl p-4 text-xs sm:text-sm font-medium border bg-amber-50 border-amber-200 text-amber-950';
+                        statusBox.textContent = 'Түз интернет жөнөтүүсү жеткиликсиз болгондуктан, почта программаңыз (mailto) даяр кат менен ачылды.';
+                    }
+                });
+            }
+
+            // ==================== 4. ПОРТФОЛИО БӨЛҮМҮ (2007–2027) ====================
+            const PORTFOLIO_ITEMS = [
+                {
+                    period: '2007-2008',
+                    role: '№54-Кесиптик лицей • ОшМУ • Мамлекеттик мекемелер',
+                    notes: [
+                        'Агай педагогикадагы эмгек жолун №54-Кесиптик лицейинде өндүрүштүк окуунун устаты, ("Токой чарбасы" тайпасына) мугалим болуп эмгектенген.',
+                        'Андан соң өз билимин жогорулатуу максатында ОшМУга окууга тапшырган.',
+                        'Бир топ убакыт башка мамлекеттик мекемелерде эмгектенген.'
+                    ],
+                    achievements: []
+                },
+                {
+                    period: '2020-2021',
+                    role: 'Ноокат райондук балдардын чыгармачылык борбору — ийрим мугалими',
+                    notes: [
+                        'Ноокат райондук балдардын чыгармачылык борборунда ийрим мугалими болуу менен баштаган.'
+                    ],
+                    achievements: [
+                        'Ноокат РайБЧБга профессионал сайт ачкан.',
+                        'Райондук конкурс, олимпиадаларга 2 окуучу катыштырган.',
+                        'Облустук конкурс, олимпиадаларга 2 окуучу катыштырган.',
+                        'Республикалык конкурс, олимпиадаларга 1 окуучу катыштырган.'
+                    ]
+                },
+                {
+                    period: '2021-2022',
+                    role: 'Ноокат РБЧБ (ийрим мугалими) • «Ак-Булак» мектеп-гимназиясы (информатика мугалими)',
+                    notes: [
+                        'Ноокат РБЧБда ийрим мугалими, "Ак-Булак" мектеп-гимназиясына информатика мугалими болуп эмгектенет.'
+                    ],
+                    achievements: [
+                        'Райондук конкурс, сынактарга 4 окуучу катыштырган.',
+                        'Облустук сынактарга 2 окуучу катыштырган.',
+                        'Республикалык сынактарга 1 окуучу катыштырган.',
+                        'Эл аралык сынактарга 1 окуучу катыштырган.'
+                    ]
+                },
+                {
+                    period: '2022-2023',
+                    role: '«Ак-Булак» мектеп-гимназиясы — информатика предмети мугалими',
+                    notes: [
+                        '"Ак-Булак" мектеп-гимназиясына информатика предмети мугалими болуп эмгектенген.'
+                    ],
+                    achievements: [
+                        'Райондук конкурс, олимпиадаларга 6 окуучу катыштырган.',
+                        'Облустук конкурс, олимпиадаларга 4 окуучу катыштырган.',
+                        'Республикалык конкурс, олимпиадаларга 2 окуучу катыштырган.',
+                        'Эл аралык конкурс, олимпиадаларга 2 окуучу катыштырган.'
+                    ]
+                },
+                {
+                    period: '2023-2024',
+                    role: '«Ак-Булак» & А. Парпиев атындагы мектеп-гимназиялары («Мехатроника») • Ноокат РБЧБ («Маалымат технологиялары»)',
+                    notes: [
+                        '"Ак-Булак", А. Парпиев атындагы мектеп-гимназияларында "Мехатроника" ийрим мугалими, Ноокат РБЧБда "Маалымат технологиялары" ийрим мугалими болуп эмгектенген.'
+                    ],
+                    achievements: [
+                        'Райондук конкурстарга 7 окуучу катыштырган.',
+                        'Облустук конкурстарга 3 окуучу катыштырган.',
+                        '"Жылдын мыкты ийрим мугалими-2023" сынагынын Республикалык турунун катышуучусу.'
+                    ]
+                },
+                {
+                    period: '2024-2025',
+                    role: 'Ноокат РБЧБ («Мехатроника» ийрим жетекчиси) • А. Парпиев атындагы орто мектеби («Маалымат технологиялары»)',
+                    notes: [
+                        'Ноокат РБЧБда "Мехатроника" ийрим жетекчиси, А. Парпиев атындагы орто мектебинде "Маалымат технологиялары" ийрим мугалими болуп эмгектенген.'
+                    ],
+                    achievements: [
+                        'Райондук конкурстарга 8 окуучу катыштырган.',
+                        'Облустук конкурстарга 2 окуучу катыштырган.',
+                        '"Жылдын мыкты ийрим мугалими-2024" сынагынын Республикалык турунун 1-орун ээси.'
+                    ]
+                },
+                {
+                    period: '2025-2026',
+                    role: 'Ноокат РБЧБ & А. Парпиев орто мектеби («Мехатроника») • Тажибай орто мектеби (Информатика)',
+                    notes: [
+                        'Ноокат РБЧБда, А. Парпиев атындагы орто мектебинде "Мехатроника" ийрим жетекчиси, Тажибай атындагы орто мектебинде Информатика предмети мугалими болуп эмгектенген.'
+                    ],
+                    achievements: [
+                        'Райондук конкурстарга 9 окуучу катыштырган.',
+                        'Облустук конкурстарга 2 окуучу катыштырган.',
+                        'Республикалык конкурс, сынактарга 1 окуучу катыштырган.',
+                        'Эл аралык конкурс, сынактарга 1 окуучу катыштырган.'
+                    ]
+                },
+                {
+                    period: '2026-2027',
+                    role: 'Ноокат РБЧБ («Мехатроника» ийрим жетекчиси) • С. Токторов атындагы орто мектеби (Информатика)',
+                    notes: [
+                        'Ноокат РБЧБда "Мехатроника" ийрим жетекчиси, С. Токторов атындагы орто мектебинде Информатика предмети мугалими болуп эмгектенген.'
+                    ],
+                    achievements: []
+                }
+            ];
+
+            function renderPortfolio(selectedPeriod) {
+                const container = document.getElementById('portfolio-cards-container');
+                if (!container) return;
+
+                const list = selectedPeriod === 'all'
+                    ? PORTFOLIO_ITEMS
+                    : PORTFOLIO_ITEMS.filter((item) => item.period === selectedPeriod);
+
+                container.innerHTML = list.map((item) => {
+                    const achievementsBlock = item.achievements.length > 0
+                        ? `
+                            <div class="mt-4 pt-3.5 border-t border-slate-100">
+                                <div class="text-xs font-extrabold uppercase tracking-wider text-teal-700 mb-2">Ийгилиги:</div>
+                                <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700">
+                                    ${item.achievements.map((ach) => `
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-teal-600 font-bold">✓</span>
+                                            <span>${escapeHtml(ach)}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        `
+                        : '';
+
+                    return `
+                        <article class="card-elevated rounded-3xl p-6 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between gap-2 mb-3">
+                                    <span class="px-3.5 py-1 rounded-full bg-blue-600 text-white text-xs font-extrabold shadow-sm">${escapeHtml(item.period)}</span>
+                                    <span class="text-xs font-semibold text-slate-400">Эмгек жолу</span>
+                                </div>
+                                <h3 class="font-display text-base sm:text-lg font-bold text-slate-900 mb-2.5 leading-snug">${escapeHtml(item.role)}</h3>
+                                <div class="space-y-2">
+                                    ${item.notes.map((n) => `<p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${escapeHtml(n)}</p>`).join('')}
+                                </div>
+                            </div>
+                            ${achievementsBlock}
+                        </article>
+                    `;
+                }).join('');
+            }
+
+            document.querySelectorAll('.portfolio-filter-btn').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const period = btn.getAttribute('data-period');
+                    document.querySelectorAll('.portfolio-filter-btn').forEach((b) => {
+                        b.className = 'portfolio-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all cursor-pointer';
+                    });
+                    btn.className = 'portfolio-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-900 text-white shadow transition-all cursor-pointer';
+                    renderPortfolio(period);
+                });
+            });
+
+            // ==================== 5. ОНЛАЙН СЕМИНАРГА КАТТАЛУУ ФОРМАСЫ (#register) ====================
+            function getRegistrationData() {
+                return {
+                    fullname: document.getElementById('reg-fullname').value.trim(),
+                    region: document.getElementById('reg-region').value.trim(),
+                    school: document.getElementById('reg-school').value.trim(),
+                    phone: document.getElementById('reg-phone').value.trim(),
+                    email: document.getElementById('reg-email').value.trim(),
+                    module: document.getElementById('reg-module').value,
+                    comment: document.getElementById('reg-comment').value.trim()
+                };
+            }
+
+            function formatRegistrationEmail(data) {
+                return [
+                    '«Профилдик информатиканы окутуу методикасы» онлайн семинарына катталуу',
+                    '====================================================================',
+                    `Аты-жөнү: ${data.fullname || '-'}`,
+                    `Аймагы: ${data.region || '-'}`,
+                    `Мектеби: ${data.school || '-'}`,
+                    `Телефон / WhatsApp: ${data.phone || '-'}`,
+                    `Email: ${data.email || '-'}`,
+                    `Тандалган багыт / модуль: ${data.module || '-'}`,
+                    `Комментарий: ${data.comment || 'Жок'}`
+                ].join('\n');
+            }
+
+            document.getElementById('reg-copy-btn').addEventListener('click', () => {
+                const text = formatRegistrationEmail(getRegistrationData());
+                const statusBox = document.getElementById('reg-status-box');
+                copyTextToClipboard(text).then((ok) => {
+                    statusBox.className = 'rounded-2xl p-4 text-sm font-medium border bg-blue-50 border-blue-200 text-blue-900';
+                    statusBox.textContent = ok
+                        ? 'Катталуу тексти алмашуу буферине көчүрүлдү.'
+                        : 'Көчүрүү мүмкүн болбой калды.';
+                });
+            });
+
+            document.getElementById('seminar-registration-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const data = getRegistrationData();
+                const submitBtn = document.getElementById('reg-submit-btn');
+                const statusBox = document.getElementById('reg-status-box');
+                const subject = `Онлайн семинарга катталуу: ${data.fullname} (${data.module})`;
+                const body = formatRegistrationEmail(data);
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Жөнөтүлүүдө...';
+                statusBox.className = 'hidden rounded-2xl p-4 text-sm font-medium border';
+
+                const ok = await sendViaFormSubmit(subject, body, data.email, data.fullname);
+
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Катталууну жөнөтүү';
+
+                if (ok) {
+                    statusBox.className = 'rounded-2xl p-4 text-sm font-semibold border bg-emerald-50 border-emerald-200 text-emerald-900';
+                    statusBox.textContent = 'Сиздин катталуу билдирмеңиз ийгиликтүү жөнөтүлдү. Рахмат!';
+                    e.target.reset();
+                } else {
+                    openMailtoClient(subject, body);
+                    statusBox.className = 'rounded-2xl p-4 text-sm font-medium border bg-amber-50 border-amber-200 text-amber-950';
+                    statusBox.textContent = 'Түз жөнөтүү мүмкүн болбой калгандыктан, почта программаңыз (mailto) даяр кат менен ачылды.';
+                }
+            });
+
+            // ==================== WORD (.DOCX) ЖАНА WORD АЛМАШУУ БУФЕРИНЕ КӨЧҮРҮҮ ====================
+            const WORD_MIME_DOCX = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+
+            const CRC32_TABLE = (() => {
+                const tbl = new Uint32Array(256);
+                for (let i = 0; i < 256; i++) {
+                    let c = i;
+                    for (let k = 0; k < 8; k++) {
+                        c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+                    }
+                    tbl[i] = c >>> 0;
+                }
+                return tbl;
+            })();
+
+            function crc32Bytes(bytes) {
+                let crc = 0xFFFFFFFF;
+                for (let i = 0; i < bytes.length; i++) {
+                    crc = CRC32_TABLE[(crc ^ bytes[i]) & 0xFF] ^ (crc >>> 8);
+                }
+                return (crc ^ 0xFFFFFFFF) >>> 0;
+            }
+
+            function buildZipBlob(entries, mimeType) {
+                const encoder = new TextEncoder();
+                const localParts = [];
+                const centralParts = [];
+                let offset = 0;
+
+                for (const entry of entries) {
+                    const nameBytes = encoder.encode(entry.path);
+                    const dataBytes = typeof entry.content === 'string'
+                        ? encoder.encode(entry.content)
+                        : entry.content;
+                    const crc = crc32Bytes(dataBytes);
+                    const size = dataBytes.length;
+
+                    const localHdr = new Uint8Array(30 + nameBytes.length);
+                    const lv = new DataView(localHdr.buffer);
+                    lv.setUint32(0, 0x04034b50, true);
+                    lv.setUint16(4, 20, true);
+                    lv.setUint16(6, 0x0800, true);
+                    lv.setUint16(8, 0, true);
+                    lv.setUint16(10, 0, true);
+                    lv.setUint16(12, 0x21, true);
+                    lv.setUint32(14, crc, true);
+                    lv.setUint32(18, size, true);
+                    lv.setUint32(22, size, true);
+                    lv.setUint16(26, nameBytes.length, true);
+                    lv.setUint16(28, 0, true);
+                    localHdr.set(nameBytes, 30);
+
+                    localParts.push(localHdr, dataBytes);
+
+                    const centHdr = new Uint8Array(46 + nameBytes.length);
+                    const cv = new DataView(centHdr.buffer);
+                    cv.setUint32(0, 0x02014b50, true);
+                    cv.setUint16(4, 20, true);
+                    cv.setUint16(6, 20, true);
+                    cv.setUint16(8, 0x0800, true);
+                    cv.setUint16(10, 0, true);
+                    cv.setUint16(12, 0, true);
+                    cv.setUint16(14, 0x21, true);
+                    cv.setUint32(16, crc, true);
+                    cv.setUint32(20, size, true);
+                    cv.setUint32(24, size, true);
+                    cv.setUint16(28, nameBytes.length, true);
+                    cv.setUint16(30, 0, true);
+                    cv.setUint16(32, 0, true);
+                    cv.setUint16(34, 0, true);
+                    cv.setUint16(36, 0, true);
+                    cv.setUint32(38, 0, true);
+                    cv.setUint32(42, offset, true);
+                    centHdr.set(nameBytes, 46);
+
+                    centralParts.push(centHdr);
+                    offset += localHdr.length + dataBytes.length;
+                }
+
+                let centralSize = 0;
+                for (const p of centralParts) centralSize += p.length;
+
+                const eocd = new Uint8Array(22);
+                const ev = new DataView(eocd.buffer);
+                ev.setUint32(0, 0x06054b50, true);
+                ev.setUint16(4, 0, true);
+                ev.setUint16(6, 0, true);
+                ev.setUint16(8, entries.length, true);
+                ev.setUint16(10, entries.length, true);
+                ev.setUint32(12, centralSize, true);
+                ev.setUint32(16, offset, true);
+                ev.setUint16(20, 0, true);
+
+                return new Blob([...localParts, ...centralParts, eocd], { type: mimeType });
+            }
+
+            function xmlEscape(str) {
+                return String(str || '')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&apos;');
+            }
+
+            function parseKtpRows(ktpLines) {
+                return (ktpLines || []).map((line, idx) => {
+                    const parts = String(line || '').split('|').map((s) => s.trim());
+                    return {
+                        num: parts[0] || `№${idx + 1}`,
+                        hours: parts[1] || '',
+                        topic: parts[2] || line,
+                        practice: parts[3] || ''
+                    };
+                });
+            }
+
+            function docxPara(text, opts = {}) {
+                const {
+                    bold = false,
+                    sizeHalfPt = 20,
+                    colorHex = '1E293B',
+                    align = 'left',
+                    spaceBefore = 0,
+                    spaceAfter = 80,
+                    keepNext = false,
+                    indentLeft = 0
+                } = opts;
+
+                const pPrChildren = [];
+                if (align !== 'left') {
+                    pPrChildren.push(`<w:jc w:val="${align}"/>`);
+                }
+                if (keepNext) {
+                    pPrChildren.push(`<w:keepNext/>`);
+                }
+                if (indentLeft > 0) {
+                    pPrChildren.push(`<w:ind w:left="${indentLeft}"/>`);
+                }
+                pPrChildren.push(`<w:spacing w:before="${spaceBefore}" w:after="${spaceAfter}" w:line="276" w:lineRule="auto"/>`);
+
+                const rPrChildren = [
+                    `<w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/>`,
+                    `<w:color w:val="${colorHex}"/>`,
+                    `<w:sz w:val="${sizeHalfPt}"/>`,
+                    `<w:szCs w:val="${sizeHalfPt}"/>`
+                ];
+                if (bold) {
+                    rPrChildren.push(`<w:b/><w:bCs/>`);
+                }
+
+                return `<w:p><w:pPr>${pPrChildren.join('')}</w:pPr><w:r><w:rPr>${rPrChildren.join('')}</w:rPr><w:t xml:space="preserve">${xmlEscape(text)}</w:t></w:r></w:p>`;
+            }
+
+            function docxCell(text, widthDxa, opts = {}) {
+                const {
+                    fillHex = 'FFFFFF',
+                    bold = false,
+                    sizeHalfPt = 19,
+                    colorHex = '0F172A',
+                    align = 'left',
+                    vAlign = 'center'
+                } = opts;
+
+                const pXml = docxPara(text, {
+                    bold,
+                    sizeHalfPt,
+                    colorHex,
+                    align,
+                    spaceBefore: 0,
+                    spaceAfter: 0
+                });
+
+                return `<w:tc><w:tcPr><w:tcW w:w="${widthDxa}" w:type="dxa"/><w:shd w:val="clear" w:color="auto" w:fill="${fillHex}"/><w:vAlign w:val="${vAlign}"/><w:tcMar><w:top w:w="90" w:type="dxa"/><w:bottom w:w="90" w:type="dxa"/><w:left w:w="120" w:type="dxa"/><w:right w:w="120" w:type="dxa"/></w:tcMar></w:tcPr>${pXml}</w:tc>`;
+            }
+
+            function buildModuleKtpDocxBlob(mod) {
+                const rows = parseKtpRows(mod.ktp);
+                const colWidths = [950, 1250, 4100, 3300];
+                const totalW = colWidths.reduce((a, b) => a + b, 0);
+
+                const tblBorders = `<w:tblBorders><w:top w:val="single" w:sz="6" w:space="0" w:color="94A3B8"/><w:bottom w:val="single" w:sz="6" w:space="0" w:color="94A3B8"/><w:left w:val="single" w:sz="6" w:space="0" w:color="94A3B8"/><w:right w:val="single" w:sz="6" w:space="0" w:color="94A3B8"/><w:insideH w:val="single" w:sz="4" w:space="0" w:color="CBD5E1"/><w:insideV w:val="single" w:sz="4" w:space="0" w:color="CBD5E1"/></w:tblBorders>`;
+                const gridCols = colWidths.map((w) => `<w:gridCol w:w="${w}"/>`).join('');
+
+                const headerRowXml = `<w:tr><w:trPr><w:tblHeader/><w:cantSplit/></w:trPr>` +
+                    docxCell('Бөлүм №', colWidths[0], { fillHex: '1E3A8A', bold: true, sizeHalfPt: 19, colorHex: 'FFFFFF', align: 'center' }) +
+                    docxCell('Саат', colWidths[1], { fillHex: '1E3A8A', bold: true, sizeHalfPt: 19, colorHex: 'FFFFFF', align: 'center' }) +
+                    docxCell('Сабактын темасы жана мазмуну', colWidths[2], { fillHex: '1E3A8A', bold: true, sizeHalfPt: 19, colorHex: 'FFFFFF', align: 'left' }) +
+                    docxCell('Практикалык иш / натыйжа', colWidths[3], { fillHex: '1E3A8A', bold: true, sizeHalfPt: 19, colorHex: 'FFFFFF', align: 'left' }) +
+                    `</w:tr>`;
+
+                const bodyRowsXml = rows.map((r, idx) => {
+                    const bg = idx % 2 === 1 ? 'F8FAFC' : 'FFFFFF';
+                    return `<w:tr><w:trPr><w:cantSplit/></w:trPr>` +
+                        docxCell(r.num, colWidths[0], { fillHex: bg, bold: true, sizeHalfPt: 19, colorHex: '1E3A8A', align: 'center', vAlign: 'top' }) +
+                        docxCell(r.hours, colWidths[1], { fillHex: bg, bold: true, sizeHalfPt: 19, colorHex: '0F766E', align: 'center', vAlign: 'top' }) +
+                        docxCell(r.topic, colWidths[2], { fillHex: bg, bold: true, sizeHalfPt: 19, colorHex: '0F172A', align: 'left', vAlign: 'top' }) +
+                        docxCell(r.practice, colWidths[3], { fillHex: bg, bold: false, sizeHalfPt: 19, colorHex: '334155', align: 'left', vAlign: 'top' }) +
+                        `</w:tr>`;
+                }).join('');
+
+                const ktpTableXml = `<w:tbl><w:tblPr><w:tblW w:w="${totalW}" w:type="dxa"/><w:tblLayout w:type="fixed"/>${tblBorders}</w:tblPr><w:tblGrid>${gridCols}</w:tblGrid>${headerRowXml}${bodyRowsXml}</w:tbl>`;
+
+                const extraSections = [];
+                if (Array.isArray(mod.lesson45) && mod.lesson45.length > 0) {
+                    extraSections.push(docxPara('45 мүнөттүк сабактын үлгүлүк түзүмү:', { bold: true, sizeHalfPt: 22, colorHex: '0F172A', spaceBefore: 180, spaceAfter: 80, keepNext: true }));
+                    mod.lesson45.forEach((step) => {
+                        extraSections.push(docxPara(`• ${step.time} — ${step.stage}: ${step.desc}`, { sizeHalfPt: 19, colorHex: '334155', spaceAfter: 50, indentLeft: 180 }));
+                    });
+                }
+
+                if (Array.isArray(mod.bloomGoals) && mod.bloomGoals.length > 0) {
+                    extraSections.push(docxPara('Блум таксономиясы боюнча максаттар:', { bold: true, sizeHalfPt: 22, colorHex: '0F766E', spaceBefore: 160, spaceAfter: 80, keepNext: true }));
+                    mod.bloomGoals.forEach((g) => {
+                        extraSections.push(docxPara(`• ${g}`, { sizeHalfPt: 19, colorHex: '334155', spaceAfter: 50, indentLeft: 180 }));
+                    });
+                }
+
+                if (Array.isArray(mod.rubric) && mod.rubric.length > 0) {
+                    extraSections.push(docxPara('Баалоо рубрикасы:', { bold: true, sizeHalfPt: 22, colorHex: '4338CA', spaceBefore: 160, spaceAfter: 80, keepNext: true }));
+                    mod.rubric.forEach((rb) => {
+                        extraSections.push(docxPara(`• ${rb.level}: ${rb.criteria}`, { sizeHalfPt: 19, colorHex: '334155', spaceAfter: 50, indentLeft: 180 }));
+                    });
+                }
+
+                const documentXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>` +
+                    `<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">` +
+                    `<w:body>` +
+                    docxPara(`КАЛЕНДАРДЫК-ТЕМАТИКАЛЫК ПЛАН (КТП)`, { bold: true, sizeHalfPt: 28, colorHex: '0F172A', spaceBefore: 0, spaceAfter: 60, keepNext: true }) +
+                    docxPara(`Модуль: ${mod.title} (${mod.badge})`, { bold: true, sizeHalfPt: 22, colorHex: '1E3A8A', spaceBefore: 0, spaceAfter: 80, keepNext: true }) +
+                    docxPara(mod.summary || '', { sizeHalfPt: 20, colorHex: '475569', spaceBefore: 0, spaceAfter: 140, keepNext: true }) +
+                    ktpTableXml +
+                    extraSections.join('') +
+                    `<w:sectPr><w:pgSz w:w="12240" w:h="15840"/><w:pgMar w:top="1080" w:right="1080" w:bottom="1080" w:left="1080"/></w:sectPr>` +
+                    `</w:body></w:document>`;
+
+                const contentTypesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>` +
+                    `<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">` +
+                    `<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>` +
+                    `<Default Extension="xml" ContentType="application/xml"/>` +
+                    `<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>` +
+                    `<Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>` +
+                    `</Types>`;
+
+                const relsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>` +
+                    `<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">` +
+                    `<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>` +
+                    `</Relationships>`;
+
+                const docRelsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>` +
+                    `<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">` +
+                    `<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>` +
+                    `</Relationships>`;
+
+                const stylesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>` +
+                    `<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">` +
+                    `<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/><w:sz w:val="20"/><w:szCs w:val="20"/></w:rPr></w:style>` +
+                    `</w:styles>`;
+
+                return buildZipBlob([
+                    { path: '[Content_Types].xml', content: contentTypesXml },
+                    { path: '_rels/.rels', content: relsXml },
+                    { path: 'word/document.xml', content: documentXml },
+                    { path: 'word/styles.xml', content: stylesXml },
+                    { path: 'word/_rels/document.xml.rels', content: docRelsXml }
+                ], WORD_MIME_DOCX);
+            }
+
+            function buildWordClipboardHtml(mod) {
+                const rows = parseKtpRows(mod.ktp);
+                const trs = rows.map((r) => `
+                    <tr>
+                        <td style="border:1px solid #94a3b8;padding:6px 8px;text-align:center;font-weight:bold;color:#1e3a8a;">${escapeHtml(r.num)}</td>
+                        <td style="border:1px solid #94a3b8;padding:6px 8px;text-align:center;font-weight:bold;color:#0f766e;">${escapeHtml(r.hours)}</td>
+                        <td style="border:1px solid #94a3b8;padding:6px 8px;font-weight:bold;color:#0f172a;">${escapeHtml(r.topic)}</td>
+                        <td style="border:1px solid #94a3b8;padding:6px 8px;color:#334155;">${escapeHtml(r.practice)}</td>
+                    </tr>
+                `).join('');
+
+                return `<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>
+                    <h2 style="font-family:Calibri,Arial,sans-serif;color:#0f172a;margin:0 0 6px 0;">КТП — ${escapeHtml(mod.title)} (${escapeHtml(mod.badge)})</h2>
+                    <table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;width:100%;font-family:Calibri,Arial,sans-serif;font-size:11pt;">
+                        <thead>
+                            <tr style="background:#1e3a8a;color:#ffffff;">
+                                <th style="border:1px solid #1e3a8a;padding:7px 9px;">Бөлүм №</th>
+                                <th style="border:1px solid #1e3a8a;padding:7px 9px;">Саат</th>
+                                <th style="border:1px solid #1e3a8a;padding:7px 9px;">Сабактын темасы жана мазмуну</th>
+                                <th style="border:1px solid #1e3a8a;padding:7px 9px;">Практикалык иш / натыйжа</th>
+                            </tr>
+                        </thead>
+                        <tbody>${trs}</tbody>
+                    </table>
+                </body></html>`;
+            }
+
+            function slugifyFilename(title) {
+                const clean = String(title || 'KTP')
+                    .toLowerCase()
+                    .replace(/[^a-z0-9а-яөүң]+/gi, '_')
+                    .replace(/^_+|_+$/g, '');
+                return `KTP_${clean || 'modul'}.docx`;
+            }
+
+            function triggerBlobDownload(blob, filename) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 400);
+            }
+
+            async function copyKtpAsWord(mod) {
+                const docxBlob = buildModuleKtpDocxBlob(mod);
+                const htmlFragment = buildWordClipboardHtml(mod);
+                const plainText = [
+                    `МОДУЛЬ: ${mod.title} (${mod.badge})`,
+                    'Календардык-тематикалык план (КТП):',
+                    ...parseKtpRows(mod.ktp).map((r) => `${r.num}\t${r.hours}\t${r.topic}\t${r.practice}`)
+                ].join('\n');
+
+                let copiedToClipboard = false;
+                if (navigator.clipboard && typeof navigator.clipboard.write === 'function' && typeof ClipboardItem === 'function') {
+                    try {
+                        const clipboardItems = {};
+                        clipboardItems[WORD_MIME_DOCX] = docxBlob;
+                        clipboardItems['text/html'] = new Blob([htmlFragment], { type: 'text/html' });
+                        clipboardItems['text/plain'] = new Blob([plainText], { type: 'text/plain' });
+                        await navigator.clipboard.write([new ClipboardItem(clipboardItems)]);
+                        copiedToClipboard = true;
+                    } catch (_err) {
+                        try {
+                            await navigator.clipboard.write([
+                                new ClipboardItem({
+                                    'text/html': new Blob([htmlFragment], { type: 'text/html' }),
+                                    'text/plain': new Blob([plainText], { type: 'text/plain' })
+                                })
+                            ]);
+                            copiedToClipboard = true;
+                        } catch (_err2) {
+                            copiedToClipboard = false;
+                        }
+                    }
+                }
+
+                if (!copiedToClipboard) {
+                    await copyTextToClipboard(plainText);
+                }
+
+                const filename = slugifyFilename(mod.title);
+                triggerBlobDownload(docxBlob, filename);
+
+                return { copiedToClipboard, filename };
+            }
+
+            // ==================== 6. ПОЧТА ЖӨНӨТҮҮ ЖАРДАМЧЫ ФУНКЦИЯЛАРЫ ====================
+            async function sendViaFormSubmit(subject, message, replyToEmail, senderName) {
+                try {
+                    const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(TARGET_EMAIL)}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            _subject: subject,
+                            _template: 'box',
+                            name: senderName || 'Педагог',
+                            email: replyToEmail || '',
+                            message: message
+                        })
+                    });
+                    if (!response.ok) return false;
+                    const json = await response.json();
+                    return json && (json.success === true || json.success === 'true');
+                } catch (_err) {
+                    return false;
+                }
+            }
+
+            function openMailtoClient(subject, body) {
+                try {
+                    const href = `mailto:${TARGET_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    window.location.href = href;
+                } catch (_err) {
+                    // Эгер mailto ачылбаса, колдонуучу көчүрүү баскычын колдоно алат
+                }
+            }
+
+            async function copyTextToClipboard(text) {
+                try {
+                    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                        await navigator.clipboard.writeText(text);
+                        return true;
+                    }
+                } catch (_err) {
+                    // Fallback төмөндө аткарылат
+                }
+                try {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.setAttribute('readonly', '');
+                    textarea.style.position = 'fixed';
+                    textarea.style.opacity = '0';
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    const copied = document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    return Boolean(copied);
+                } catch (_err) {
+                    return false;
+                }
+            }
+
+            function escapeHtml(str) {
+                return String(str || '')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            // ==================== 7. МОБИЛДИК МЕНЮ ЖАНА КЛАВИАТУРА ====================
+            const mobileBtn = document.getElementById('mobile-menu-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const iconOpen = document.getElementById('menu-icon-open');
+            const iconClose = document.getElementById('menu-icon-close');
+
+            function setMobileDrawer(open) {
+                if (!mobileBtn || !mobileDrawer) return;
+                mobileDrawer.classList.toggle('hidden', !open);
+                mobileBtn.setAttribute('aria-expanded', String(open));
+                if (iconOpen) iconOpen.classList.toggle('hidden', open);
+                if (iconClose) iconClose.classList.toggle('hidden', !open);
+            }
+
+            mobileBtn.addEventListener('click', () => {
+                const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+                setMobileDrawer(!isExpanded);
+            });
+
+            document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+                link.addEventListener('click', () => setMobileDrawer(false));
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModuleModal();
+                    closeCustomInfoModal();
+                    setMobileDrawer(false);
+                }
+            });
+
+            // Баштапкы рендер
+            function bindTeacherPhotoFallback() {
+                const heroImg = document.getElementById('hero-teacher-photo');
+                const heroFallback = document.getElementById('hero-teacher-photo-fallback');
+                const portfolioImg = document.getElementById('portfolio-teacher-photo');
+
+                if (heroImg && heroFallback) {
+                    const showHeroFallback = () => {
+                        heroImg.classList.add('hidden');
+                        heroFallback.classList.remove('hidden');
+                    };
+                    heroImg.addEventListener('error', showHeroFallback);
+                    if (heroImg.complete && heroImg.naturalWidth === 0) {
+                        showHeroFallback();
+                    }
+                }
+
+                if (portfolioImg && heroFallback) {
+                    const showPortfolioFallback = () => {
+                        const clone = heroFallback.cloneNode(true);
+                        clone.removeAttribute('id');
+                        clone.classList.remove('hidden');
+                        clone.classList.add('w-full', 'h-full', 'object-cover', 'block');
+                        portfolioImg.replaceWith(clone);
+                    };
+                    portfolioImg.addEventListener('error', showPortfolioFallback);
+                    if (portfolioImg.complete && portfolioImg.naturalWidth === 0) {
+                        showPortfolioFallback();
+                    }
+                }
+            }
+
+            bindTeacherPhotoFallback();
+            initHeroCustomButtons();
+            renderModules();
+            renderToolPanel('wokwi');
+            renderTestQuestion();
+            renderPortfolio('all');
+        })();
+    </script>
+</body>
+</html>
